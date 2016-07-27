@@ -33,9 +33,14 @@ public class Movie {
 	private String runtime;
 	private String genre;
 	private String director;
+	
+	@Column(length = 1024)
 	private String writer;
 	private String actors;
+	
+	@Column(length = 1024)
 	private String plot;
+	
 	private String language;
 	private String country;
 	private String awards;
