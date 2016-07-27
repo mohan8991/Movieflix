@@ -17,8 +17,14 @@ public class MovieRepositoryImp implements MovieRepository{
 	private EntityManager em;
 	
 	@Override
-	public List<Movie> findAll() {
+	public List<Movie> findAllByTitle() {
 		TypedQuery<Movie> query = em.createNamedQuery("Movie.findAllByTitle", Movie.class);
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Movie> findAllByYear() {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findAllByYear", Movie.class);
 		return query.getResultList();
 	}
 	
@@ -52,6 +58,16 @@ public class MovieRepositoryImp implements MovieRepository{
 	@Override
 	public void delete(Movie mov) {
 		em.remove(mov);	
+	}
+
+	@Override
+	public List<Movie> createAll(List<Movie> movies) {
+		for(Movie mov : movies )
+		{
+			em.persist(mov);
+		}
+		return movies;
+		
 	}
 
 }

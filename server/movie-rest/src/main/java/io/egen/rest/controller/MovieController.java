@@ -20,9 +20,14 @@ public class MovieController {
 	@Autowired
 	MovieService service;
 	
-	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Movie> findAll() {
-		return service.findAll();
+	@RequestMapping(method = RequestMethod.GET, path = "sortbyTitle", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> findAllByTitle() {
+		return service.findAllByTitle();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "sortbyYear", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> findAllByYear() {
+		return service.findAllByYear();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -34,6 +39,13 @@ public class MovieController {
 	public Movie create(@RequestBody Movie mov) {
 		return service.create(mov);
 	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = "arrayInput", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	
+	public List<Movie> createAll(@RequestBody List<Movie> movies){
+		return service.createAll(movies);
+	}
+	
 	@RequestMapping(method = RequestMethod.PUT, path = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Movie update(@PathVariable("id") String movId, @RequestBody Movie mov) {
 		return service.update(movId, mov);

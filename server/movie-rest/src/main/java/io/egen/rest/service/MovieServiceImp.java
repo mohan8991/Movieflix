@@ -18,10 +18,15 @@ public class MovieServiceImp implements MovieService{
 	MovieRepository repository;
 	
 	@Override
-	public List<Movie> findAll() {
-		return repository.findAll();
+	public List<Movie> findAllByTitle() {
+		return repository.findAllByTitle();
 	}
 
+	@Override
+	public List<Movie> findAllByYear() {
+		return repository.findAllByYear();
+	}
+	
 	@Override
 	public Movie findOne(String movid) {
 		Movie existing = repository.findOne(movid);
@@ -40,7 +45,19 @@ public class MovieServiceImp implements MovieService{
 		}
 		return repository.create(mov);
 	}
+	
+	@Override
+	@Transactional
+	public List<Movie> createAll(List<Movie> movies){
+		for(Movie mov : movies){
+			System.out.println(mov.getTitle());
+			return repository.createAll(movies);
+		}
+		System.out.println("this is from the service");
+		return movies;
 		
+	}
+	
 	@Override
 	@Transactional
 	public Movie update(String id, Movie mov) {
