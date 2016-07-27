@@ -18,14 +18,40 @@ public class MovieRepositoryImp implements MovieRepository{
 	
 	@Override
 	public List<Movie> findAll() {
-		TypedQuery<Movie> query = em.createNamedQuery("Movie.findAll", Movie.class);
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findAllByTitle", Movie.class);
 		return query.getResultList();
 	}
-
+	
+	@Override
+	public Movie findOne(String id) {
+		return em.find(Movie.class, id);
+	}
+	
 	@Override
 	public Movie create(Movie mov) {
 		em.persist(mov);
 		return mov;
+	}
+	
+	@Override
+	public Movie findByTitle(String title) {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByTitle", Movie.class);
+		query.setParameter("pTitle", title);
+		List<Movie> Movies = query.getResultList();
+		if (Movies != null && Movies.size() == 1) {
+			return Movies.get(0);
+		}
+		return null;
+	}
+
+	@Override
+	public Movie update(Movie mov) {
+		return em.merge(mov);
+	}
+
+	@Override
+	public void delete(Movie mov) {
+		em.remove(mov);	
 	}
 
 }
