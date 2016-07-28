@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.egen.rest.controller.UserController;
 import io.egen.rest.entity.Movie;
 import io.egen.rest.exception.MovieAlreadyExistsException;
 import io.egen.rest.exception.MovieNotFoundException;
+import io.egen.rest.exception.UserNoWritePermission;
 import io.egen.rest.repository.MovieRepository;
 
 @Service
@@ -16,6 +18,10 @@ public class MovieServiceImp implements MovieService{
 
 	@Autowired
 	MovieRepository repository;
+	
+	@Autowired
+    UserController userController;
+
 	
 	@Override
 	public List<Movie> findAllByTitle() {
@@ -38,7 +44,11 @@ public class MovieServiceImp implements MovieService{
 		
 	@Override
 	@Transactional
-	public Movie create(Movie mov) {
+    public Movie create(String UserName, Movie mov) {
+        String Role = userController.aReq(UserName);
+        if (!(Role.equals("Admin"))) {
+            throw new UserNoWritePermission(" Only Admin Can do that ");
+        }
 		Movie existing = repository.findByTitle(mov.getTitle());
 		if (existing != null) {
 			throw new MovieAlreadyExistsException("Movie Already Exists: " + mov.getTitle());
@@ -55,13 +65,17 @@ public class MovieServiceImp implements MovieService{
 		}
 		System.out.println("this is from the service");
 		return movies;
-		
 	}
 	
 	@Override
 	@Transactional
 	public Movie update(String id, Movie mov) {
-		Movie existing = repository.findOne(id);
+		String[] breakId = id.split("&");
+		String Role = userController.aReq(breakId[1]);
+		if(!(Role.equals("Admin"))){
+			throw new UserNoWritePermission(" Only Admin Can do that ");
+		}
+		Movie existing = repository.findOne(breakId[0]);
 		if (existing == null) {
 			throw new MovieNotFoundException("Movie with ID:" + id + " not found");
 		}
@@ -71,7 +85,12 @@ public class MovieServiceImp implements MovieService{
 	@Override
 	@Transactional
 	public void delete(String movid) {
-		Movie existing = repository.findOne(movid);
+		String[] breakId = movid.split("&");
+		String Role = userController.aReq(breakId[1]);
+		if(!(Role.equals("Admin"))){
+			throw new UserNoWritePermission(" Only Admin Can do that ");
+		}
+		Movie existing = repository.findOne(breakId[0]);
 		if (existing == null) {
 			throw new MovieNotFoundException("Movie with id:" + movid + " not found");
 		}

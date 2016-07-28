@@ -12,7 +12,7 @@ public interface MovieService {
 	
 	public Movie findOne(String movid);
 	
-	public Movie create(Movie mov);
+    public Movie create(String UserName, Movie mov);
 	
 	public List<Movie> createAll(List<Movie> movies);
 	
