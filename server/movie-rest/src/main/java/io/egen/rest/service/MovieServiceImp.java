@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.egen.rest.controller.UserController;
 import io.egen.rest.entity.Movie;
 import io.egen.rest.exception.MovieAlreadyExistsException;
 import io.egen.rest.exception.MovieNotFoundException;
+import io.egen.rest.exception.UserNoWritePermission;
 import io.egen.rest.repository.MovieRepository;
+
 
 @Service
 public class MovieServiceImp implements MovieService{
@@ -17,6 +20,9 @@ public class MovieServiceImp implements MovieService{
 	@Autowired
 	MovieRepository repository;
 	
+	@Autowired
+	UserController userController;
+		
 	@Override
 	public List<Movie> findAllByTitle() {
 		return repository.findAllByTitle();
@@ -38,12 +44,16 @@ public class MovieServiceImp implements MovieService{
 		
 	@Override
 	@Transactional
-	public Movie create(Movie mov) {
+	public Movie create(String UserName, Movie mov) {
+		String Role = userController.aReq(UserName);
+		if (!(Role.equals("Admin"))) {
+			throw new UserNoWritePermission(" Only Admin Can do that ");
+		}
 		Movie existing = repository.findByTitle(mov.getTitle());
 		if (existing != null) {
 			throw new MovieAlreadyExistsException("Movie Already Exists: " + mov.getTitle());
 		}
-		return repository.create(mov);
+		return repository.create(mov);	
 	}
 	
 	@Override
@@ -53,14 +63,13 @@ public class MovieServiceImp implements MovieService{
 			System.out.println(mov.getTitle());
 			return repository.createAll(movies);
 		}
-		System.out.println("this is from the service");
 		return movies;
 		
 	}
 	
 	@Override
 	@Transactional
-	public Movie update(String id, Movie mov) {
+	public Movie update(String id, Movie mov) {				//need to implement user control
 		Movie existing = repository.findOne(id);
 		if (existing == null) {
 			throw new MovieNotFoundException("Movie with ID:" + id + " not found");

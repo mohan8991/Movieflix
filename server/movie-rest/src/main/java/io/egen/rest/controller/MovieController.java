@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.egen.rest.entity.Movie;
+//import io.egen.rest.repository.UserRepository;
 import io.egen.rest.service.MovieService;
 
 @RestController
@@ -35,13 +36,12 @@ public class MovieController {
 		return service.findOne(movId);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Movie create(@RequestBody Movie mov) {
-		return service.create(mov);
+	@RequestMapping(method = RequestMethod.POST, path = "{username}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Movie create(@PathVariable("username") String userName, @RequestBody Movie mov) {
+		return service.create(userName, mov);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "arrayInput", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	
 	public List<Movie> createAll(@RequestBody List<Movie> movies){
 		return service.createAll(movies);
 	}
