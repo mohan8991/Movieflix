@@ -6,7 +6,7 @@ public interface UserService {
 
 	public UserInfo findOne(String userId);
 
-	public UserInfo create(UserInfo uInfo);
+	public UserInfo create(String userName, UserInfo uInfo);
 
 	public UserInfo update(String userId, UserInfo uInfo);
 
