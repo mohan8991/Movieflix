@@ -30,6 +30,41 @@ public class MovieController {
 		return service.findAllByYear();
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, path = "sortbyGenre", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> findAllByGenre() {
+		return service.findAllByGenre();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "sortbyType", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> findAllByType() {
+		return service.findAllByType();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "sortbyImdbRatings", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> findAllByImdbRatings() {
+		return service.findAllByImdbRatings();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "sortbyImdbVoters", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> findAllByImdbVoters() {
+		return service.findAllByImdbVoters();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "sortMbyRatings", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> findMoviesByRating() {
+		return service.findMoviesByRating();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "sortSbyRatings", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> findSeriesByRating() {
+		return service.findSeriesByRating();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "{title}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Movie findbyTitle(@PathVariable("title") String title) {
+		return service.findbyTitle(title);
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, path = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Movie findOne(@PathVariable("id") String movId) {
 		return service.findOne(movId);

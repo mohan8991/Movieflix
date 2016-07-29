@@ -70,4 +70,40 @@ public class MovieRepositoryImp implements MovieRepository{
 		
 	}
 
+	@Override
+	public List<Movie> findAllByGenre() {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findAllByGenre", Movie.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Movie> findAllByType() {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findAllByType", Movie.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Movie> findAllByImdbRatings() {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findAllByImdbRatings", Movie.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Movie> findAllByImdbVoters() {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findAllByImdbVoters", Movie.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Movie> findMoviesByRating() {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findMoviesByRating", Movie.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Movie> findSeriesByRating() {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findSeriesByRating", Movie.class);
+		return query.getResultList();
+	}
+
 }

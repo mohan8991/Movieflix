@@ -34,6 +34,45 @@ public class MovieServiceImp implements MovieService{
 	}
 	
 	@Override
+	public List<Movie> findAllByGenre() {
+		return repository.findAllByGenre();
+	}
+
+	@Override
+	public List<Movie> findAllByType() {
+		return repository.findAllByType();
+	}
+
+	@Override
+	public List<Movie> findAllByImdbRatings() {
+		return repository.findAllByImdbRatings();
+	}
+
+	@Override
+	public List<Movie> findAllByImdbVoters() {
+		return repository.findAllByImdbVoters();
+	}
+
+	@Override
+	public List<Movie> findMoviesByRating() {
+		return repository.findMoviesByRating();
+	}
+
+	@Override
+	public List<Movie> findSeriesByRating() {
+		return repository.findSeriesByRating();
+	}
+
+	@Override
+	public Movie findbyTitle(String title) {
+		Movie existing = repository.findByTitle(title);
+		if (existing == null) {
+			throw new MovieNotFoundException("Movie with ID:" + title + " not found");
+		}
+		return existing;
+	}
+	
+	@Override
 	public Movie findOne(String movid) {
 		Movie existing = repository.findOne(movid);
 		if (existing == null) {
@@ -59,12 +98,7 @@ public class MovieServiceImp implements MovieService{
 	@Override
 	@Transactional
 	public List<Movie> createAll(List<Movie> movies){
-		for(Movie mov : movies){
-			System.out.println(mov.getTitle());
-			return repository.createAll(movies);
-		}
-		System.out.println("this is from the service");
-		return movies;
+		return repository.createAll(movies);
 	}
 	
 	@Override

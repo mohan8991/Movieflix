@@ -22,4 +22,16 @@ public interface MovieRepository {
 
 	public void delete(Movie mov);
 
+	public List<Movie> findAllByGenre();
+
+	public List<Movie> findAllByType();
+
+	public List<Movie> findAllByImdbRatings();
+
+	public List<Movie> findAllByImdbVoters();
+
+	public List<Movie> findMoviesByRating();
+
+	public List<Movie> findSeriesByRating();
+
 }
