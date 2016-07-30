@@ -17,16 +17,16 @@ public class UserRepositoryimp implements UserRepository{
 	private EntityManager em;
 	
 	@Override
-	public UserInfo findOne(String userId) {
+	public UserInfo findOne(String userName) {
 		TypedQuery<UserInfo> query = em.createNamedQuery("UserInfo.findOne", UserInfo.class);
-		query.setParameter("pUserName", userId);
+		query.setParameter("pUserName", userName);
 		List<UserInfo> Users = query.getResultList();
 		if ( Users != null && Users.size() == 1) {
 			return Users.get(0);
 		}
 		return null;
 	}
-
+	
 	@Override
 	public UserInfo create(UserInfo uInfo) {
 		em.persist(uInfo);

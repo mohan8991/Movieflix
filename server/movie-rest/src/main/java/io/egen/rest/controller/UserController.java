@@ -19,8 +19,8 @@ public class UserController {
 	UserService service;
 	
 	@RequestMapping(method = RequestMethod.GET, path = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public UserInfo findOne(@PathVariable("id") String userId) {
-		return service.findOne(userId);
+	public UserInfo findOne(@PathVariable("id") String userName) {
+		return service.findOne(userName);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "{username}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

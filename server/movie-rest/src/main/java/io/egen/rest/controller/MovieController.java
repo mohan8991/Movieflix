@@ -70,7 +70,7 @@ public class MovieController {
 		return service.findOne(movId);
 	}
 	
-    @RequestMapping(method = RequestMethod.POST, path = "{username}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(method = RequestMethod.POST, path = "{username}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Movie create(@PathVariable("username") String userName, @RequestBody Movie mov) {
         return service.create(userName, mov);
     }

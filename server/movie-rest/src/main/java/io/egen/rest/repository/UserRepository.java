@@ -4,7 +4,7 @@ import io.egen.rest.entity.UserInfo;
 
 public interface UserRepository {
 
-	public UserInfo findOne(String userId);
+	public UserInfo findOne(String userName);
 
 	public UserInfo create(UserInfo uInfo);
 

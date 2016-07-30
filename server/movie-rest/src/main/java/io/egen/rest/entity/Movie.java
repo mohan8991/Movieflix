@@ -59,7 +59,6 @@ public class Movie {
 	
 	private String type;
 	
-	
 	public String getId() {
 		return id;
 	}
@@ -188,5 +187,5 @@ public class Movie {
 				+ ", awards=" + awards + ", poster=" + poster + ", metascore=" + metascore + ", imdbRating="
 				+ imdbRating + ", imdbVotes=" + imdbVotes + ", imdbID=" + imdbID + ", type=" + type + "]";
 	}
-
+	
 }

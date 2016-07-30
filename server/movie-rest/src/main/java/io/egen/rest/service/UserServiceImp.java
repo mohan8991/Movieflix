@@ -18,14 +18,14 @@ public class UserServiceImp implements UserService {
 	UserRepository repository;
 	
 	@Override
-	public UserInfo findOne(String userId) {
-		UserInfo existing = repository.findOne(userId);
+	public UserInfo findOne(String userName) {
+		UserInfo existing = repository.findOne(userName);
 		if (existing == null){
-			throw new UserNotFoundException("User with username:" + userId + "not found");
+			throw new UserNotFoundException("User with username:" + userName + "not found");
 		}
 		return existing;
 	}
-
+	
 	@Override
 	@Transactional
 	public UserInfo create(String UserName, UserInfo uInfo) {
