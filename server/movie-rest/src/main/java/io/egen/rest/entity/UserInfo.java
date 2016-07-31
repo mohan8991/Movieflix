@@ -32,6 +32,15 @@ public class UserInfo {
 	private String password;
 	private String role;
 	
+	@Column(length = 1024)
+	private String token;
+	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	public String getId() {
 		return id;
 	}
@@ -71,6 +80,8 @@ public class UserInfo {
 	@Override
 	public String toString() {
 		return "UserInfo [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", password=" + password + ", role=" + role + "]";
+				+ ", password=" + password + ", role=" + role + ", token=" + token + "]";
 	}
+	
+	
 }

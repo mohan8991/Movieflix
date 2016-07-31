@@ -7,28 +7,28 @@ import io.egen.rest.entity.MStars;
 
 
 public interface CommentService {
+	
+	public List<Comments> findAllByTitle(String title, String authHeader);
 
-	public Comments findOne(String comId);
+	public List<Comments> findAllByUser(String authHeader);
 
-	public Comments create(String userName, String movId, Comments comments);
+	public Comments findOne(String comId, String authHeader);
 
-	public Comments update(String userName, String comId, Comments comments);
+	public Comments create(String movId, Comments comments, String authHeader);
 
-	public void delete(String userName, String comId);
+	public Comments update( String comId, Comments comments, String authHeader);
 
-	public List<Comments> findAllByTitle(String title);
+	public void delete(String comId, String authHeader);
 
-	public List<Comments> findAllByUser(String userName);
+	public MStars updateStar(String StarId, MStars stars, String authHeader);
 
-	public MStars updateStar(String userName, String StarId, MStars stars);
+	public MStars createStar(String starId, MStars stars, String authHeader);
 
-	public MStars createStar(String userName, String starId, MStars stars);
-
-	public MStars findStarbyId(String starId);
+	public MStars findStarbyId(String starId, String authHeader);
 
 	public MStars findStarByMov(String movId);
 
-	public MStars avgRating(String movId);
+	public MStars avgRating(String movId, String authHeader);
 	
 	
 

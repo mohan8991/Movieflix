@@ -4,14 +4,18 @@ import io.egen.rest.entity.UserInfo;
 
 public interface UserService {
 
-	public UserInfo findOne(String userName);
+	public UserInfo findOne(String userName, String authHeader);
 	
-	public UserInfo create(String userName, UserInfo uInfo);
+	public UserInfo create(UserInfo uInfo);
 
-	public UserInfo update(String userId, UserInfo uInfo);
+	public UserInfo update(UserInfo uInfo, String authHeader);
 
-	public void delete(String userId);
+	public void delete(String userName, String authHeader2);
 
 	public String aReq(String userName);
+
+	public void SignOut(String authHeader);
+
+	public UserInfo SignIn(UserInfo uInfo);
 	
 }

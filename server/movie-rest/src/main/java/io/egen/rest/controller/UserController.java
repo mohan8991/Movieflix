@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,24 +19,34 @@ public class UserController {
 	@Autowired
 	UserService service;
 	
-	@RequestMapping(method = RequestMethod.GET, path = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public UserInfo findOne(@PathVariable("id") String userName) {
-		return service.findOne(userName);
+	@RequestMapping(method = RequestMethod.GET, path = "{UserName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public UserInfo findbyUserName(@PathVariable("UserName") String userName, @RequestHeader(value="Authorization") String authHeader) {
+		return service.findOne(userName, authHeader);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, path = "{username}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public UserInfo create(@PathVariable("username") String userName, @RequestBody UserInfo uInfo) {
-		return service.create(userName, uInfo);
+	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public UserInfo create(@RequestBody UserInfo uInfo) {
+		return service.create(uInfo);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public UserInfo update(@PathVariable("id") String userId, @RequestBody UserInfo uInfo) {
-		return service.update(userId, uInfo);
+	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public UserInfo update(@RequestBody UserInfo uInfo, @RequestHeader(value="Authorization") String authHeader) {
+		return service.update(uInfo, authHeader);
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE, path = "{id}")
-	public void delete(@PathVariable("id") String userId) {
-		service.delete(userId);
+	@RequestMapping(method = RequestMethod.DELETE, path = "{UserName}")
+	public void delete(@PathVariable("UserName") String userName,@RequestHeader(value="Authorization") String authHeader) {
+		service.delete(userName, authHeader);
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT,path = "Signin", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public UserInfo SignIn(@RequestBody UserInfo uInfo) {
+		return service.SignIn(uInfo);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "SignOut")
+	public void SignOut(@RequestHeader(value="Authorization") String authHeader){
+		service.SignOut(authHeader);
 	}
 	
 	public String aReq(String UserName){

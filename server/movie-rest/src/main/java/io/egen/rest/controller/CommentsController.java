@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,40 +23,40 @@ public class CommentsController {
 	CommentService service;
 	
 	@RequestMapping(method = RequestMethod.GET, path = "{comId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Comments findOne(@PathVariable("comId") String comId) {
-		return service.findOne(comId);
+	public Comments findOne(@PathVariable("comId") String comId, @RequestHeader(value="Authorization") String authHeader) {
+		return service.findOne(comId, authHeader);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "findbyTitle/{movTitle}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Comments> findAllByTitle(@PathVariable("movTitle") String Title) {
-		return service.findAllByTitle(Title);
+	public List<Comments> findAllByTitle(@PathVariable("movTitle") String Title, @RequestHeader(value="Authorization") String authHeader) {
+		return service.findAllByTitle(Title, authHeader);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, path = "findbyUser/{userName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Comments> findAllByUser(@PathVariable("userName") String userName) {
-		return service.findAllByUser(userName);
+	@RequestMapping(method = RequestMethod.GET, path = "findbyUser", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Comments> findAllByUser(@RequestHeader(value="Authorization") String authHeader) {
+		return service.findAllByUser(authHeader);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, path = "{username}/{movid}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Comments create(@PathVariable("username") String userName, @PathVariable("movid") String movId,  @RequestBody Comments comments) {
-		return service.create(userName, movId, comments);
+	@RequestMapping(method = RequestMethod.POST, path = "{movid}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Comments create(@PathVariable("movid") String movId,  @RequestBody Comments comments, @RequestHeader(value="Authorization") String authHeader) {
+		return service.create(movId, comments, authHeader);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "{userName}/{comId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Comments update(@PathVariable("userName") String UserName, @PathVariable("comId") String comId, @RequestBody Comments comments) {
-		return service.update(UserName, comId, comments);
+	@RequestMapping(method = RequestMethod.PUT, path = "{comId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Comments update(@PathVariable("comId") String comId, @RequestBody Comments comments, @RequestHeader(value="Authorization") String authHeader) {
+		return service.update(comId, comments, authHeader);
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE, path = "{username}/{comId}")
-	public void delete(@PathVariable("username") String UserName, @PathVariable("comId") String comId) {
-		service.delete(UserName, comId);
+	@RequestMapping(method = RequestMethod.DELETE, path = "{comId}")
+	public void delete(@PathVariable("comId") String comId, @RequestHeader(value="Authorization") String authHeader) {
+		service.delete(comId, authHeader);
 	}
 	
 	//for Star Management
 	
 	@RequestMapping(method = RequestMethod.GET, path = "findStar/{starId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public MStars findStarbyId(@PathVariable("starId") String starId) {
-		return service.findStarbyId(starId);
+	public MStars findStarbyId(@PathVariable("starId") String starId, @RequestHeader(value="Authorization") String authHeader) {
+		return service.findStarbyId(starId, authHeader);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "findStarByMov/{movId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -63,19 +64,19 @@ public class CommentsController {
 		return service.findStarByMov(movId);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, path = "star/{username}/{movId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public MStars createStar(@PathVariable("username") String userName, @PathVariable("movId") String movId,  @RequestBody MStars Stars) {
-		return service.createStar(userName, movId, Stars);
+	@RequestMapping(method = RequestMethod.POST, path = "star/{movId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public MStars createStar(@PathVariable("movId") String movId,  @RequestBody MStars Stars, @RequestHeader(value="Authorization") String authHeader) {
+		return service.createStar(movId, Stars, authHeader);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "star/{userName}/{starId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public MStars updateStar(@PathVariable("userName") String UserName, @PathVariable("starId") String starId, @RequestBody MStars Stars) {
-		return service.updateStar(UserName, starId, Stars);
+	@RequestMapping(method = RequestMethod.PUT, path = "star/{starId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public MStars updateStar(@PathVariable("starId") String starId, @RequestBody MStars Stars, @RequestHeader(value="Authorization") String authHeader) {
+		return service.updateStar(starId, Stars, authHeader);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "getAvgStar/{movId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public MStars avgRating(@PathVariable("movId") String movId) {
-		return service.avgRating(movId);
+	public MStars avgRating(@PathVariable("movId") String movId, @RequestHeader(value="Authorization") String authHeader) {
+		return service.avgRating(movId, authHeader);
 	}
 	
 }
