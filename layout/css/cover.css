@@ -246,7 +246,7 @@ div.gallery ul li img {
 div.gallery ul li img:hover {
     width: 200px;
     height: 250%;
-    margin-top: -100px;
+    margin-top: -50px;
     margin-left: -130px;
     top: 65%;
     left: 65%;
