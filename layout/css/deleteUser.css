@@ -1,0 +1,133 @@
+@font-face {
+    font-family: broadway-lights;
+    src: url("../fonts/Showtime.ttf");
+}
+
+body {
+    background: url("https://irenehyleung.files.wordpress.com/2012/12/2012-movie-collage31.jpg") no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 20px;
+    color: white;
+}
+
+.night-hotel {
+    /*margin-top: -10px;*/
+    /*margin-bottom: -15px;*/
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    /*padding: 20px;*/
+    border: none;
+    font: normal 45px/1 "Monoton", Helvetica, sans-serif;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    text-shadow: 0 0 10px rgb(255,255,255) , 0 0 20px rgb(255,255,255) , 0 0 30px rgb(255,255,255) , 0 0 40px rgb(255, 18, 21), 0 0 70px rgb(255,17,119) , 0 0 80px rgb(255,17,119) , 0 0 100px rgb(255,17,119) , 0 0 150px rgb(255,17,1) ;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+}
+
+.night-hotel:hover {
+    text-shadow: 0 0 5px rgb(255,255,255) , 0 0 10px rgb(255,255,255) , 0 0 15px rgb(255,255,255) , 0 0 20px rgb(255,17,119) , 0 0 35px rgb(255,17,119) , 0 0 40px rgb(255,17,119) , 0 0 50px rgb(255,17,119) , 0 0 75px rgb(255,17,119) ;
+}
+
+.navbar-inverse {
+    border-radius: 10px;
+}
+
+.navbar-brand {
+    padding: 0;
+    padding-left: 30px;
+}
+
+.jumbotron {
+    width: auto;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: groove;
+    border-color: #0f0f0f;
+    padding-top: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    margin-right: 20px;
+    position: absolute;
+    background-color: #0f0f0f;
+    opacity: .97;
+}
+
+.heading-box {
+    width: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #333333;
+}
+
+
+.heading h2 {
+    margin: 5px;
+    font-family: broadway-lights;
+    color: #ffffff;
+    font-size: 35px;
+    margin-left: 20px;
+}
+
+.movie-info .col-lg-4 img {
+    border: solid silver;
+
+}
+
+@media (min-width: 1024px) {
+    .movie-info .poster img {
+        margin: auto;
+        display: block;
+    }
+}
+
+hr.movie-line {
+    border-top: 1px solid #cdcdcd;
+}
+
+.movie-box {
+    margin-left: 12%;
+    width: 90%;
+}
+
+.input-group-addon {
+    width: 40%;
+    text-align: right;
+}
+.input-group .form-control {
+    width: 130%;
+}
+
+.btn-primary {
+    margin-right: 26%;
+    float: right;
+
+}
+
+.form-group1 {
+    margin-top: -20px;
+    font-size: 20px;
+}
+
+.parameters{
+    padding: 20px;
+}
+
+.key {
+    text-align: right;
+    padding-right: 0px;
+}
+
+.values {
+    text-align: left;
+    padding-left: 0px;
+}
