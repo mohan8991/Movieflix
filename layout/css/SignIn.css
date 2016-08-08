@@ -39,15 +39,21 @@ body {
     border-top-right-radius: 0;
 }
 
-.form-signin .btn-primary {
+.form-signin .btn-primary{
     width: 30%;
     float: right;
     margin-top: -5px;
 }
 
-.container .btn-danger{
-    margin-top: -20px;
-    margin-left: 420px;
-    width: 90px;
+/*.container .btn-danger{*/
+    /*margin-top: -20px;*/
+    /*margin-left: 420px;*/
+    /*width: 90px;*/
+    /*float: left;*/
+/*}*/
+
+.form-signin .btn-danger {
+    margin-top: -5px;
     float: left;
+    width: 30%;
 }
