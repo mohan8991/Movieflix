@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Title</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/Moviepage.css" rel="stylesheet">
+
+    <link async href="http://fonts.googleapis.com/css?family=Monoton" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand night-hotel">MovieFlix</div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li class="navbar-userrole"><a href="#">Signed In as First Name,</a></li>-->
+                <li class="dropdown navbar-userrole">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, FirstName<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Sign Out</a></li>
+                        <li><a href="#">Edit Profile</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">User Role: Admin</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Edit User Info</a></li>
+                        <li><a href="#">Delete User</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Create Movie</a></li>
+                        <li><a href="#">Edit Movie</a></li>
+                        <li><a href="#">Delete Movie</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                <li><a href="#">Catalog<span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search Movie by Title" required>
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!-- End of Nav -->
+
+<div class="jumbotron ">
+    <div class="row">
+        <div class="heading-box">
+            <div class="heading">
+                <h2 id="jumbotron-heading">{Movie.info}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="movie-box">
+        <div class="movie-info">
+            <div class="poster col-xs-12 col-md-4 col-lg-4">
+                <img src="http://ia.media-imdb.com/images/M/MV5BMTU4MDU3NDQ5Ml5BMl5BanBnXkFtZTgwOTU5MDUxNTE@._V1_SX300.jpg">
+            </div>
+            <div class="movie-info col-xs-12 col-md-8 col-lg-8">
+                <span class="title">Movie Title</span><span class="year"> <a href="#">(2015)</a></span> <br>
+                <span class="movie-tags">PG-13 | 141 min | <a class="genre">Action, Adventure, Sci-Fi</a> | 01 May 2015 (USA) | <a>Movie</a> </span><br>
+                <div class="stars col-xs-12 col-lg-12">
+                    <hr class="movie-line">
+                    <div class="big-star">
+                        <b>3/5</b>
+                    </div>
+                    <span class="star-heading col-lg-5 col-md-6 col-xs-5">MovieFlix Ratings:</span>
+                    <span class="stars-ratings">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3" checked/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label><br>
+                        </fieldset>
+                    </span>
+                    <div class="col-lg-2">
+                       <b>/ 12345 voters</b>
+                    </div>
+                    <br><hr class="movie-line">
+                </div>
+                <b>Plot:</b> When Tony Stark and Bruce Banner try to jump-start a dormant peacekeeping program called Ultron, things go horribly wrong and it's up to Earth's Mightiest Heroes to stop the villainous Ultron from enacting his terrible plans.<br>
+                <b>Director:</b> Joss Whedon <br>
+                <b>Writer:</b> Joss Whedon, Stan Lee (Marvel comics), Jack Kirby (Marvel comics) <br>
+                <b>Actors:</b> Robert Downey Jr., Chris Hemsworth, Mark Ruffalo, Chris Evans<br>
+                <b>Language:</b> English <br>
+                <b>Awards:</b> 1 win & 12 nominations.<br>
+                <b>Metascore:</b> 66 <br>
+                <b>ImdbRating:</b> 7.6 <br>
+                <b>ImdbVotes:</b> 370,909<br>
+                <a href="http://www.imdb.com/title/tt2395427"><b>Imdb Link</b></a><br>
+            </div>
+        </div>
+    </div>
+    <div class="user-reviews col-lg-6 col-md-6 col-sm-12">
+        <h2>User Reviews</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>username</strong> <span class="text-muted">commented 5 days ago</span>
+                        </div>
+                        <div class="panel-body">
+                            Example This movie is awesome
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <form class="input-comments">
+                        <textarea class="form-control" rows="5" id="comment" placeholder="Please Leave a Comment......." required></textarea>
+                        <button type="button" class="btn btn-default">Submit</button>
+                    </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    <div class="trailer col-sm-12 col-lg-6">
+        <iframe src="http://www.imdb.com/video/imdb/vi2821566745/imdb/embed?autoplay=false&width=480" width="480" height="270" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
+    </div>
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/docs.min.js"></script>
+
+</body>
+</html>
