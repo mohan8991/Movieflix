@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MovieFlix, Welcome</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/SignedinHomepage.css" rel="stylesheet">
+
+    <link async href="http://fonts.googleapis.com/css?family=Monoton" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand night-hotel">MovieFlix</div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li class="navbar-userrole"><a href="#">Signed In as First Name,</a></li>-->
+                <li class="dropdown navbar-userrole">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, FirstName<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Sign Out</a></li>
+                        <li><a href="#">Edit Profile</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">User Role: Admin</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Add User</a></li>
+                        <li><a href="#">Edit User Info</a></li>
+                        <li><a href="#">Delete User</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Create Movie</a></li>
+                        <li><a href="#">Edit Movie</a></li>
+                        <li><a href="#">Delete Movie</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                <li><a href="#">Catalog<span class="sr-only">(current)</span></a>
+            </ul></li>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search Movie by Title" required>
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="jumbotron ">
+    <div class="row">
+        <div class="heading-box">
+            <div class="heading">
+                <h2 id="jumbotron-heading">{Movie.Home}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="movie-box col-xs-12">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="wrapper">
+                        <div class="gallery">
+                            <h1>Box Office Hits</h1>
+                            <ul>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMTU1ODg2OTU1MV5BMl5BanBnXkFtZTgwMzA5OTg2ODE@._V1_SY1000_SX632_AL_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BNzU3MTM5M2ItZDVkNy00NjM3LWI2NzUtY2I4N2FhYzI2MmIwXkEyXkFqcGdeQXVyNjc1MzIxNDc@._V1_SY1000_CR0,0,640,1000_AL_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMjIwNzE5MTgwNl5BMl5BanBnXkFtZTgwNjM4OTA0OTE@._V1_SY1000_CR0,0,675,1000_AL_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMjIzMzA1OTkzNV5BMl5BanBnXkFtZTgwODE3MjM4NzE@._V1_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMTUwMTk2ODc1OV5BMl5BanBnXkFtZTgwMzU4MzgzOTE@._V1_SY1000_CR0,0,675,1000_AL_.jpg"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="wrapper">
+                        <div class="gallery">
+                            <h1>Top Rated Movies</h1>
+                            <ul>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SY1000_CR0,0,672,1000_AL_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMjEyMjcyNDI4MF5BMl5BanBnXkFtZTcwMDA5Mzg3OA@@._V1_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMjE4MjA1NTAyMV5BMl5BanBnXkFtZTcwNzM1NDQyMQ@@._V1_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_SY1000_CR0,0,673,1000_AL_.jpg"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="wrapper">
+                        <div class="gallery">
+                            <h1>Top Rated TV Series</h1>
+                            <ul>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMjM5OTQ1MTY5Nl5BMl5BanBnXkFtZTgwMjM3NzMxODE@._V1_SY1000_CR0,0,674,1000_AL_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMTQ0ODYzODc0OV5BMl5BanBnXkFtZTgwMDk3OTcyMDE@._V1_SY1000_CR0,0,678,1000_AL_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMTc5NzgwNDE3N15BMl5BanBnXkFtZTgwNDAxMTY5MTE@._V1._CR51,41,938,1336_SY1000_CR0,0,702,1000_AL_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BNTA2MTE1NDI5OV5BMl5BanBnXkFtZTcwNzM2MzU3Nw@@._V1_SY1000_CR0,0,808,1000_AL_.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BNDAwMDY0NjA2Ml5BMl5BanBnXkFtZTgwMTA1NTI3NzE@._V1_.jpg"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="wrapper">
+                        <div class="gallery">
+                            <h1>Popular on IMDB</h1>
+                            <ul>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SX300.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMjIwNTYzMzE1M15BMl5BanBnXkFtZTcwOTE5Mzg3OA@@._V1_SX300.jpg"></li>
+                                <li><img src="http://ia.media-imdb.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_SX300.jpg"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/docs.min.js"></script>
+
+</body>
+</html>
