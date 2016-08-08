@@ -6,7 +6,13 @@
 }
 
 body {
+    background: url("https://irenehyleung.files.wordpress.com/2012/12/2012-movie-collage31.jpg") no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     margin: 20px;
+    color: white;
 }
 
 .night-hotel {
@@ -44,6 +50,7 @@ body {
 }
 
 .jumbotron {
+    width: auto;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     border: groove;
     border-color: #0f0f0f;
@@ -53,13 +60,16 @@ body {
     border-radius: 10px;
     margin-right: 20px;
     position: absolute;
+    background-color: #0f0f0f;
+    opacity: .97;
 }
 
 .heading-box {
+    width: auto;
     margin-top: 10px;
     border-radius: 10px;
-    background-color: #080906;
     padding: 10px;
+    background-color: #333333;
     margin-bottom: 20px;
 }
 
@@ -206,4 +216,8 @@ hr.movie-line {
 .user-reviews {
     margin-top: 50px;
     float: right;
+}
+
+.btn-default {
+    margin-top: 10px;
 }
