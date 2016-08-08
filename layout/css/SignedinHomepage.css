@@ -62,11 +62,10 @@ body {
 
 .heading-box {
     width: auto;
-    /*Need to change this after everything is done*/
     margin-top: 10px;
     border-radius: 10px;
     padding: 10px;
-    background-color: #333333
+    background-color: #333333;
 }
 
 
