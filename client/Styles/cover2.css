@@ -46,7 +46,6 @@ body {
 
 .navbar-brand {
     padding: 0;
-    padding-top: 5px; /*from title*/
     padding-left: 30px;
 }
 
@@ -56,8 +55,8 @@ body {
     border: groove;
     border-color: #0f0f0f;
     padding-top: 0px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 10px;
     border-radius: 10px;
     margin-right: 20px;
     position: absolute;
@@ -66,6 +65,8 @@ body {
 }
 
 .heading-box {
+    margin-left: 15px;
+    margin-right: 18px;
     width: auto;
     margin-top: 10px;
     border-radius: 10px;
@@ -89,6 +90,9 @@ body {
 }
 
 @media (min-width: 1200px) {
+    .jumbotron {
+        padding-left: 10px;
+    }
 
     .heading-box {
         width: 1270px;
@@ -240,7 +244,6 @@ div.gallery ul li img:hover {
 
 .heading-box .dropdown-toggle{
     padding: 10px;
-    /*background-color: #ffffff;*/
     color: #fff;
     border-radius: 10px;
     margin-top: -45px;
@@ -255,32 +258,48 @@ div.gallery ul li img:hover {
     border-radius: 10px;
     position: static;
     z-index: 5;
-
+    /*overflow: hidden;*/
     /*-webkit-transition: all 0.3s ease-in-out;*/
     /*-moz-transition: all 0.3s ease-in-out;*/
     /*-o-transition: all 0.3s ease-in-out;*/
     /*transition: all 0.3s ease-in-out;*/
 }
 
-.thumbnail img {
-    height: auto;
-    width: auto;
+.thumbnail a>img {
+    height: 300px;
 }
 
 .thumbnail .caption {
     padding-bottom: 25%;
+    height: 80px;
 }
+
 .caption h5{
-    margin-top: 0px;
-    text-align: left;
+    margin: 0;
+    text-align: justify;
     font-weight: 700;
+    border-bottom: 1px solid #c4cad0;
+    margin-bottom: 5px;
 }
 
-.caption p {
-    font-size: small;
+.caption .m-info {
+    font-size: 11px;
+    text-align: center;
+    border-bottom: 1px solid #c4cad0;
+    margin-bottom: -20px;
 }
 
+@media (min-device-width: 1024px) {
 
+    .thumbnail a > img {
+        height: 250px;
+    }
+
+    .thumbnail .caption {
+        height: 110px;
+    }
+
+}
 
 .stars-ratings {
     float: left;
@@ -326,7 +345,7 @@ div.gallery ul li img:hover {
 
 /*from title*/
 
-
+/*
 @media (min-width: 1024px) {
     .movie-info .poster img {
         margin: auto;
@@ -365,10 +384,10 @@ hr.movie-line {
     font-size: 30px;
     margin-top: -10px;
 }
-
+*/
 
 /*comments styles*/
-
+/*
 .thumbnail {
     padding:0px;
 }
@@ -407,14 +426,16 @@ hr.movie-line {
     padding: 50px;
     vertical-align: middle;
     float: left;
-    /*margin-left: 10px;*/
-}
+    /*margin-left: 10px; }*/
 
+/*
 .user-reviews {
-    margin-top: 50px;
-    float: right;
+   margin-top: 50px;
+   float: right;
 }
 
 .btn-default {
-    margin-top: 10px;
+   margin-top: 10px;
 }
+
+*/

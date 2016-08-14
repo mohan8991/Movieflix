@@ -4,31 +4,32 @@
             <h2 id="jumbotron-heading">{Entertainment.Catalog}</h2>
         </div>
         <div class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort By<span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort By<span class="caret"></span></a>
             <ul class="dropdown-menu dropdown-menu-right">
-                <li><a href="#">Title</a></li>
-                <li><a href="#">Year</a></li>
-                <li><a href="#">Genre</a></li>
-                <li><a href="#">Type</a></li>
-                <li><a href="#">IMDB Ratings</a></li>
-                <li><a href="#">No of Voters</a></li>
+                <li><a ng-click="catalogVm.sorter.sortBy='title'; catalogVm.sorter.sortOrder = !catalogVm.sorter.sortOrder;">Title</a></li>
+                <li><a ng-click="catalogVm.sorter.sortBy='year'; catalogVm.sorter.sortOrder = !catalogVm.sorter.sortOrder;">Year</a></li>
+                <li><a ng-click="catalogVm.sorter.sortBy='genre'; catalogVm.sorter.sortOrder = !catalogVm.sorter.sortOrder;">Genre</a></li>
+                <li><a ng-click="catalogVm.sorter.sortBy='type'; catalogVm.sorter.sortOrder = !catalogVm.sorter.sortOrder;">Type</a></li>
+                <li><a ng-click="catalogVm.sorter.sortBy='imdbRating'; catalogVm.sorter.sortOrder = !catalogVm.sorter.sortOrder;">IMDB Ratings</a></li>
+                <li><a ng-click="catalogVm.sorter.sortBy='imdbVotes'; catalogVm.sorter.sortOrder = !catalogVm.sorter.sortOrder;">No of Voters</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Movie</li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Movies by Ratings</a></li>
+                <li><a ng-click="catalogVm.sorter.sortBy='imdbRating'; catalogVm.sorter.sortOrder = !catalogVm.sorter.sortOrder; catalogVm.filter.type = 'movie';">Movies by Ratings</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">TV Series</li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">TV Series by Ratings</a></li>
+                <li><a a ng-click="catalogVm.sorter.sortBy='imdbRating'; catalogVm.sorter.sortOrder = !catalogVm.sorter.sortOrder; catalogVm.filter.type = 'series';">TV Series by Ratings</a></li>
             </ul>
         </div>
     </div>
     <div class="catalog">
-        <div class="col-lg-2 col-md-3 col-sm-4" ng-repeat = "movie in catalogVm.movieList">
+        <div class="col-lg-2 col-md-3 col-sm-4" ng-repeat = "movie in catalogVm.movieList | filter:catalogVm.type=catalogVm.filter.type | orderBy:catalogVm.sorter.sortBy: catalogVm.sorter.sortOrder">
             <div class="thumbnail">
-                <a ng-href="#/movieTitle/{{movie.id}}"><img ng-src={{movie.poster}}></a>
+                <a ng-href="#/movieTitle/{{movie.id}}"><img ng-src={{movie.poster}} class="Img-poster"></a>
                 <div class="caption">
                     <h5>{{movie.title}}</h5>
+                    <div class="m-info">{{movie.rated}} | {{movie.runtime}} | <a>{{movie.genre}}</a> | <a>{{movie.type}}</a> </div> <br>
                     <div class="stars-ratings">
                         <fieldset class="rating">
                             <input type="radio"/><label class = "full" title="Awesome - 5 stars"></label>
