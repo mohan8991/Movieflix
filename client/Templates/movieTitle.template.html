@@ -1,0 +1,84 @@
+<div class="jumbotron ">
+    <div class="row">
+        <div class="heading-box">
+            <div class="heading">
+                <h2 id="jumbotron-heading">{Movie.info}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="movie-box">
+        <div class="movie-info">
+            <div class="poster col-xs-12 col-md-4 col-lg-4">
+                <img ng-src={{mDetails.details.poster}}>
+            </div>
+            <div class="movie-info col-xs-12 col-md-8 col-lg-8">
+                <span class="title">{{mDetails.details.title}}</span><span class="year"> <a href="#">({{mDetails.details.year}})</a></span> <br>
+                <span class="movie-tags">{{mDetails.details.rated}} | {{mDetails.details.runtime}} | <a class="genre">{{mDetails.details.genre}}</a> | {{mDetails.details.released}} ({{mDetails.details.country}}) | <a>{{mDetails.details.type}}</a> </span><br>
+                <div class="stars col-xs-12 col-lg-12">
+                    <hr class="movie-line">
+                    <div class="big-star">
+                        <b>3/5</b>
+                    </div>
+                    <span class="star-heading col-lg-5 col-md-6 col-xs-5">MovieFlix Ratings:</span>
+                    <span class="stars-ratings">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3" checked/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label><br>
+                        </fieldset>
+                    </span>
+                    <div class="col-lg-2">
+                        <b>/ 12345 voters</b>
+                    </div>
+                    <br><hr class="movie-line">
+                </div>
+                <b>Plot:</b> {{mDetails.details.plot}} <br>
+                <b>Director:</b> {{mDetails.details.director}} <br>
+                <b>Writer:</b> {{mDetails.details.writer}} <br>
+                <b>Actors:</b> {{mDetails.details.actors}}<br>
+                <b>Language:</b> {{mDetails.details.language}} <br>
+                <b>Awards:</b> {{mDetails.details.awards}}<br>
+                <b>Metascore:</b> {{mDetails.details.metascore}} <br>
+                <b>ImdbRating:</b> {{mDetails.details.imdbRating}}<br>
+                <b>ImdbVotes:</b> {{mDetails.details.imdbVotes}} <br>
+                <a ng-href="http://www.imdb.com/title/{{mDetails.details.imdbID}}"><b>Imdb Link</b></a><br>
+            </div>
+        </div>
+    </div>
+    <div class="user-reviews col-lg-6 col-md-6 col-sm-12">
+        <h2>User Reviews</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>username</strong> <span class="text-muted">commented 5 days ago</span>
+                        </div>
+                        <div class="panel-body">
+                            Example This movie is awesome
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <form class="input-comments">
+                        <textarea class="form-control" rows="5" id="comment" placeholder="Please Leave a Comment......." required></textarea>
+                        <button type="button" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="trailer col-sm-12 col-lg-6">
+        <iframe src="http://www.imdb.com/video/imdb/vi2821566745/imdb/embed?autoplay=false&width=480" width="480" height="270" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
+    </div>
+</div>
