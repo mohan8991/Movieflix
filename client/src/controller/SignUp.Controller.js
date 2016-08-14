@@ -5,9 +5,9 @@
         .module('cover')
         .controller('SignUp', SignUp);
 
-    SignUp.$inject = ['userService','$localStorage'];
+    SignUp.$inject = ['userService','$localStorage', '$window'];
 
-    function SignUp(userService, $localStorage) {
+    function SignUp(userService, $localStorage, $window) {
         var user = this;
 
         user.signUp = signUp;
@@ -24,8 +24,10 @@
             userService
                 .createNew(user.newUser)
                 .then(function (SignedIndata) {
-                    console.log(SignedIndata);
-                    $localStorage.Token =  SignedIndata.token;         /*TODO please set expiration for local storage*/
+                    $localStorage.token =  SignedIndata.token;         /*TODO please set expiration for local storage*/
+                    $localStorage.firstName = SignedIndata.firstName;
+                    $localStorage.role = SignedIndata.role;
+                    $window.location = 'SignedinHomepage.html';
                 }, function (SignInError) {
                     console.log(SignInError);
                 })

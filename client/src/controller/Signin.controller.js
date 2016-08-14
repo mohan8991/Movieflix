@@ -5,9 +5,9 @@
         .module('cover')
         .controller('SignIn', SignIn);
 
-    SignIn.$inject = ['userService','$localStorage'];
+    SignIn.$inject = ['userService','$localStorage', '$window'];
 
-    function SignIn(userService, $localStorage) {
+    function SignIn(userService, $localStorage, $window) {
         var user = this;
 
         user.signIn = signIn;
@@ -19,15 +19,17 @@
         }
 
         function signIn() {
-            console.log("I am the controller you are calling");
-            console.dir(user.existing);
             userService
                 .existingIn(user.existing)
                 .then(function (SignedIndata) {
-                    $localStorage.Token =  SignedIndata.token;
+                    $localStorage.token =  SignedIndata.token;
+                    $localStorage.firstName = SignedIndata.firstName;
+                    $localStorage.role = SignedIndata.role;
+                    $window.location = 'SignedinHomepage.html';
                 }, function (SignInError) {
                     console.log(SignInError);
                 })
+
         }
 
     }
