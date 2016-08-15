@@ -345,7 +345,7 @@ div.gallery ul li img:hover {
 
 /*from title*/
 
-/*
+
 @media (min-width: 1024px) {
     .movie-info .poster img {
         margin: auto;
@@ -384,15 +384,23 @@ hr.movie-line {
     font-size: 30px;
     margin-top: -10px;
 }
-*/
+
+.mdetails {
+    text-align: left;
+}
+
+.details {
+    width:100%
+}
+
+.details tr td {
+    padding: 2px;
+}
 
 /*comments styles*/
-/*
-.thumbnail {
-    padding:0px;
-}
 .panel {
     position:relative;
+    color: #0f0f0f;
 }
 .panel>.panel-heading:after,.panel>.panel-heading:before{
     position:absolute;
@@ -426,16 +434,50 @@ hr.movie-line {
     padding: 50px;
     vertical-align: middle;
     float: left;
-    /*margin-left: 10px; }*/
+    /*margin-left: 10px;*/
+}
 
-/*
 .user-reviews {
-   margin-top: 50px;
-   float: right;
+    float: right;
 }
 
-.btn-default {
-   margin-top: 10px;
+#submit-comment {
+    margin-top: 10px;
 }
 
-*/
+/*From edit profile*/
+
+.input-group .form-control {
+    width: 100%;
+}
+
+.update {
+    float: right;
+    /*margin-right: 26%;*/
+}
+
+.form-group label {
+    text-align: right;
+}
+
+.form-group1 {
+    margin-top: -20px;
+    font-size: 20px;
+}
+
+.user-info{
+    margin-left: 20%;
+}
+
+.parameters{
+    padding: 20px;
+}
+
+.key {
+    text-align: right;
+    padding-right: 0px;
+}
+
+.values {
+    padding-left: 20px;
+}

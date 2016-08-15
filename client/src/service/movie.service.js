@@ -10,6 +10,8 @@
     function movieService($http, $q, $localStorage) {
         var movies = this;
 
+        console.log('movie service was called');
+
         $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.token;
 
         movies.getMoviesbyTitle = getMoviesbyTitle;
@@ -29,7 +31,7 @@
             return response.data; //RESOLVE
         }
 
-        function errorFn(response) {
+        function errorFn(error) {
             return $q.reject(error.status); //REJECT
         }
     }

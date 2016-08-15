@@ -54,9 +54,9 @@
             </ul></li>
             <form class="navbar-form navbar-right">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search Movie by Title" required>
+                    <input type="text" class="form-control" placeholder="Search Movie by Title" ng-model="searchText" required>
                 </div>
-                <button type="submit" class="btn btn-default">Search</button>
+                <a type="submit" class="btn btn-default" href="#/catalog">Search</a>
             </form>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -78,5 +78,6 @@
 <script src="src/controller/Catalog.controller.js"></script>
 <script src="src/service/movie.service.js"></script>
 <script src="src/controller/movieDetails.controller.js"></script>
+<script src="src/service/comments.service.js"></script>
 </body>
 </html>

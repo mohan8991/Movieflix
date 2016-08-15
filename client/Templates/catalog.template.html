@@ -1,7 +1,7 @@
 <div class="jumbotron">
     <div class="heading-box">
         <div class="heading">
-            <h2 id="jumbotron-heading">{Entertainment.Catalog}</h2>
+            <h2 id="jumbotron-heading">{Entertainment.Catalog}  {{avgStar}}</h2>
         </div>
         <div class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort By<span class="caret"></span></a>
@@ -24,19 +24,24 @@
         </div>
     </div>
     <div class="catalog">
-        <div class="col-lg-2 col-md-3 col-sm-4" ng-repeat = "movie in catalogVm.movieList | filter:catalogVm.type=catalogVm.filter.type | orderBy:catalogVm.sorter.sortBy: catalogVm.sorter.sortOrder">
+        <div class="col-lg-2 col-md-3 col-sm-4" ng-repeat = "movie in catalogVm.movieList | filter:catalogVm.type=catalogVm.filter.type | filter:searchText | orderBy:catalogVm.sorter.sortBy: catalogVm.sorter.sortOrder">
             <div class="thumbnail">
                 <a ng-href="#/movieTitle/{{movie.id}}"><img ng-src={{movie.poster}} class="Img-poster"></a>
                 <div class="caption">
                     <h5>{{movie.title}}</h5>
                     <div class="m-info">{{movie.rated}} | {{movie.runtime}} | <a>{{movie.genre}}</a> | <a>{{movie.type}}</a> </div> <br>
-                    <div class="stars-ratings">
-                        <fieldset class="rating">
-                            <input type="radio"/><label class = "full" title="Awesome - 5 stars"></label>
-                            <input type="radio"/><label class = "full" title="Awesome - 5 stars"></label>
-                            <input type="radio" checked /><label class = "full" title="Awesome - 5 stars"></label>
-                            <input type="radio"/><label class = "full" title="Awesome - 5 stars"></label>
-                            <input type="radio"/><label class = "full" title="Awesome - 5 stars"></label>
+                    <div class="stars-ratings" >
+                        <fieldset class="rating" ng-init="avgStar=((movie.imdbRating)/2 | number:0);">
+                            <input type="radio" ng-checked="avgStar==5"/><label class = "full" title="Awesome - 5 stars"></label>
+                            <input type="radio" ng-checked="avgStar==4.5"/><label class = "half" title="Awesome - 5 stars"></label>
+                            <input type="radio" ng-checked="avgStar==4"/><label class = "full" title="Excellent - 4 stars"></label>
+                            <input type="radio" ng-checked="avgStar==3.5"/><label class = "half" title="Awesome - 5 stars"></label>
+                            <input type="radio" ng-checked="avgStar==3"/><label class = "full" title="Good - 3 stars"></label>
+                            <input type="radio" ng-checked="avgStar==2.5"/><label class = "half" title="Awesome - 5 stars"></label>
+                            <input type="radio" ng-checked="avgStar==2"/><label class = "full" title="Bad - 2 stars"></label>
+                            <input type="radio" ng-checked="avgStar==1.5"/><label class = "half" title="Awesome - 5 stars"></label>
+                            <input type="radio" ng-checked="avgStar==1"/><label class = "full" title="Worst - 1 stars"></label>
+                            <input type="radio" ng-checked="avgStar==0.5"/><label class = "half" title="Awesome - 5 stars"></label>
                         </fieldset>
                     </div>
                 </div>
