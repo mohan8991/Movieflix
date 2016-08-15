@@ -191,7 +191,7 @@ public class CommentServiceImp implements CommentService {
 
 	@Override
 	@Transactional
-	public MStars findStarByMov(String movId) {
+	public List<MStars> findStarByMov(String movId) {
 		Movie existing = movieRepo.findOne(movId);
 		if (existing == null) {
 			throw new MovieNotFoundException("Movie with ID:" + movId + " not found");

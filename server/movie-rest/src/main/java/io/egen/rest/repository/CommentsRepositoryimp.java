@@ -71,14 +71,15 @@ public class CommentsRepositoryimp implements CommentsRepository {
 	}
 
 	@Override
-	public MStars findStarByMov(String movId) {
+	public List<MStars> findStarByMov(String movId) {
 		TypedQuery<MStars> query = em.createNamedQuery("MStars.findByMovId", MStars.class);
 		query.setParameter("pMovID", movId);
 		List<MStars> stars = query.getResultList();
-		if (stars != null && stars.size() == 1) {
-			return stars.get(0);
-		}
-		return null;
+//		if (stars != null && stars.size() == 1) {
+//			return stars.get(0);
+//		}
+//		return null;
+		return stars;
 	}
 	
 	public int findAvgStars(String movId){

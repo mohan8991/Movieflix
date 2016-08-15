@@ -4,7 +4,7 @@ import io.egen.rest.entity.UserInfo;
 
 public interface UserService {
 
-	public UserInfo findOne(String userName, String authHeader);
+	public UserInfo findOne(String authHeader);
 	
 	public UserInfo create(UserInfo uInfo);
 

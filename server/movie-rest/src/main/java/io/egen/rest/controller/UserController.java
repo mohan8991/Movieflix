@@ -19,13 +19,14 @@ public class UserController {
 	@Autowired
 	UserService service;
 	
-	@RequestMapping(method = RequestMethod.GET, path = "{UserName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public UserInfo findbyUserName(@PathVariable("UserName") String userName, @RequestHeader(value="Authorization") String authHeader) {
-		return service.findOne(userName, authHeader);
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public UserInfo findbyUserName(@RequestHeader(value="Authorization") String authHeader) {
+		return service.findOne(authHeader);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public UserInfo create(@RequestBody UserInfo uInfo) {
+		System.out.println("I was called" + " " + uInfo);
 		return service.create(uInfo);
 	}
 	
