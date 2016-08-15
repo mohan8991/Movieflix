@@ -12,8 +12,6 @@
         $routeProvider
             .when('/cover', {
                 templateUrl: 'Templates/carousel.template.html'
-                // controller: 'UserListController',
-                // controllerAs: 'userListVm'
             })
             .when('/signin', {
                 templateUrl: 'Templates/SignIn.template.html',

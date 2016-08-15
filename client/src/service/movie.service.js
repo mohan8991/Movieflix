@@ -53,7 +53,6 @@
         }
 
         function successFn(response) {
-            console.log(response.data);
             return response.data; //RESOLVE
         }
 

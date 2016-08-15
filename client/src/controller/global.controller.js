@@ -18,7 +18,6 @@
         init();
 
         function init() {
-            console.log('in global controller');                      /*TODO please remove this when Done*/
         }
 
         function signOut() {

@@ -18,7 +18,6 @@
             movieService
                 .getMoviesbyTitle()
                 .then(function (movieList) {
-                    console.dir(movieList);
                     movie.movieList = movieList;
                 }, function (error) {
                     console.log(error);
@@ -29,9 +28,7 @@
             commentService
                 .getAvg(id)
                 .then(function(data) {
-                    console.log(data);
                     movie.stars = data;
-                    console.dir(movie);
                 }, function(error) {
                     console.log(error);
                 });

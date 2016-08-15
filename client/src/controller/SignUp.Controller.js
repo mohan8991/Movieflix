@@ -15,7 +15,6 @@
         init();
 
         function init() {
-            console.log('in signUP controller');                      /*TODO please remove this when Done*/
         }
 
         function signUp() {
@@ -24,7 +23,7 @@
             userService
                 .createNew(user.newUser)
                 .then(function (SignedIndata) {
-                    $localStorage.token =  SignedIndata.token;         /*TODO please set expiration for local storage*/
+                    $localStorage.token =  SignedIndata.token;
                     $localStorage.firstName = SignedIndata.firstName;
                     $localStorage.role = SignedIndata.role;
                     $window.location = 'SignedinHomepage.html';

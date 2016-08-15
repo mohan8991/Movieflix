@@ -19,7 +19,6 @@
                 .getUserInfo()
                 .then(function (data) {
                     user.currentUser = data;
-                    console.log(data);
                 }, function (error) {
                     console.log(error);
                 })
@@ -31,7 +30,6 @@
                 .updateUser(user.updatingUser)
                 .then(function (data) {
                     user.currentUser = data;
-                    console.log(data);
                 }, function (error) {
                     console.log(error);
                 })

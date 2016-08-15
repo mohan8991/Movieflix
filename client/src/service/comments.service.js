@@ -22,7 +22,6 @@
 
 
         function findbyMovieTitle(Title) {
-            console.log(Title);
             return $http.get('http://localhost:8084/movie-rest/api/Comments/findbyTitle/' + Title)
                 .then(successFn, errorFn);
         }

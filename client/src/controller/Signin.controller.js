@@ -15,7 +15,6 @@
         init();
 
         function init() {
-            console.log('in sign in controller');
         }
 
         function signIn() {
