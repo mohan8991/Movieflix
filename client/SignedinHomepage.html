@@ -34,14 +34,14 @@
                 <li class="dropdown navbar-userrole">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello,{{glob.firstName}} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li class="dropdown-header">User Role: {{glob.role}}</li>
+                        <li role="separator" class="divider"></li>
                         <li><a ng-click="glob.signOut()">Sign Out</a></li>
                         <li><a href="#/editProfile">Edit Profile</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">User Role: {{glob.role}}</li>
                         <li ng-if = "glob.role=='Admin'" role="separator" class="divider"></li>
-                        <li ng-if = "glob.role=='Admin'"><a href="#/editUser">Edit User Info</a></li>
-                        <li ng-if = "glob.role=='Admin'"><a href="#/deleteUser">Delete User</a></li>
-                        <li ng-if = "glob.role=='Admin'" role="separator" class="divider"></li>
+                        <!--<li ng-if = "glob.role=='Admin'"><a href="#/editUser">Edit User Info</a></li>-->
+                        <!--<li ng-if = "glob.role=='Admin'"><a href="#/deleteUser">Delete User</a></li>-->
+                        <!--<li ng-if = "glob.role=='Admin'" role="separator" class="divider"></li>-->
                         <li ng-if = "glob.role=='Admin'"><a href="#/createMovie">Create Movie</a></li>
                         <li ng-if = "glob.role=='Admin'"><a href="#/editMovie">Edit Movie</a></li>
                         <li ng-if = "glob.role=='Admin'"><a href="#/deleteMovie">Delete Movie</a></li>
@@ -79,5 +79,8 @@
 <script src="src/service/movie.service.js"></script>
 <script src="src/controller/movieDetails.controller.js"></script>
 <script src="src/service/comments.service.js"></script>
+<script src="src/controller/editUser.controller.js"></script>
+<script src="src/service/user2.service.js"></script>
+<script src="src/controller/movie.controller.js"></script>
 </body>
 </html>

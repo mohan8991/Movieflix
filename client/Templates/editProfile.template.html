@@ -13,52 +13,37 @@
                 <table>
                     <tr>
                         <td><b>First Name:</b></td>
-                        <td class="values">Mohan Krishna</td>
+                        <td class="values">{{editUser.currentUser.firstName}}</td>
                     </tr>
                     <tr>
                         <td><b>Last Name:</b></td>
-                        <td class="values">Last Krishna</td>
+                        <td class="values">{{editUser.currentUser.lastName}}</td>
                     </tr>
                     <tr>
                         <td><b>Email:</b></td>
-                        <td class="values">mohan.8991@gmail.com</td>
+                        <td class="values">{{editUser.currentUser.email}}</td>
                     </tr>
                     <tr>
                         <td><b>User Name:</b></td>
-                        <td class="values">mohan.8991</td>
+                        <td class="values">{{editUser.currentUser.userName}}</td>
                     </tr>
                     <tr>
                         <td><b>Role:</b></td>
-                        <td class="values">Admin</td>
+                        <td class="values">{{editUser.currentUser.role}}</td>
                     </tr>
 
                 </table>
 
-
-                <!--<div class="col-lg-5 col-xs-6 key">-->
-                    <!--<span class="parameters"><b>First Name:</b></span>-->
-                    <!--<span class="parameters"><b>Last Name:</b></span>-->
-                    <!--<span class="parameters"><b>Email:</b></span><br>-->
-                    <!--<span class="parameters"><b>User Name:</b></span>-->
-                    <!--<span class="parameters"><b>Role:</b></span>-->
-                <!--</div>-->
-                <!--<div class="col-lg-6 col-xs-6 values">-->
-                    <!--Mohan Krishna <br>-->
-                    <!--Gopi Krishna <br>-->
-                    <!--example@example.com <br>-->
-                    <!--example.name <br>-->
-                    <!--Admin <br>-->
-                <!--</div>-->
             </div>
         </div>
         <div class="user-info-form col-lg-4 col-xs-12">
-            <form class="form-update">
+            <form class="form-update" ng-submit="form-update.$setPristine();editUser.updateUser();">
                 <h3>Please update your profile</h3>
                 <div class="form-group">
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><b>First Name:</b></span>
-                            <input type="text" class="form-control" name="name" id="fname"  placeholder="Enter your First Name"/>
+                            <input type="text" class="form-control" name="name" id="fname"  placeholder="Enter your First Name" ng-model="editUser.updatingUser.firstName"/>
                         </div>
                     </div>
                 </div>
@@ -67,7 +52,7 @@
                     <div class="cols-sm-12">
                         <div class="input-group">
                             <span class="input-group-addon"><b>Last Name:</b></span>
-                            <input type="text" class="form-control" name="name" id="lname"  placeholder="Enter your Last Name"/>
+                            <input type="text" class="form-control" name="name" id="lname"  placeholder="Enter your Last Name" ng-model="editUser.updatingUser.lastName"/>
                         </div>
                     </div>
                 </div>
@@ -76,7 +61,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><b>Email:</b></span>
-                            <input type="email" class="form-control" name="emil" id="emil"  placeholder="Enter your Email"/>
+                            <input type="email" class="form-control" name="emil" id="emil"  placeholder="Enter your Email" ng-model="editUser.updatingUser.email"/>
                         </div>
                     </div>
                 </div>
@@ -86,7 +71,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><b>Old Password:</b></span>
-                            <input type="password" class="form-control" name="password" id="oldPass" placeholder="Enter Your Old Password" required/>
+                            <input type="password" class="form-control" name="password" id="oldPass" placeholder="Enter Your Old Password" required />
                         </div>
                     </div>
                 </div>
@@ -95,7 +80,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><b>New Password:</b></span>
-                            <input type="password" class="form-control" name="password" id="newPass" placeholder="Enter Your New Password" required/>
+                            <input type="password" class="form-control" name="password" id="newPass" placeholder="Enter Your New Password" ng-model="temp" required/>
                         </div>
                     </div>
                 </div>
@@ -104,7 +89,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><b>Confirm New Password:</b></span>
-                            <input type="password" class="form-control" name="password" id="confirmPass" placeholder="Confirm Your New Password" required/>
+                            <input type="password" class="form-control" name="password" id="confirmPass" placeholder="Confirm Your New Password" ng-model="editUser.updatingUser.password" required/>
                         </div>
                     </div>
                 </div>

@@ -25,35 +25,35 @@
                 controller: 'movieDetailsController',
                 controllerAs: 'mDetails'
             })
-            .when('/editUser', {
-                templateUrl: 'Templates/editUser.template.html'
-                // controller: 'UserListController',
-                // controllerAs: 'userListVm'
-            })
+            // .when('/editUser', {
+            //     templateUrl: 'Templates/editUser.template.html'
+            //     // controller: 'UserListController',
+            //     // controllerAs: 'userListVm'
+            // })
             .when('/editProfile', {
-                templateUrl: 'Templates/editProfile.template.html'
-                // controller: 'UserListController',
-                // controllerAs: 'userListVm'
+                templateUrl: 'Templates/editProfile.template.html',
+                controller: 'editUserController',
+                controllerAs: 'editUser'
             })
             .when('/editMovie', {
-                templateUrl: 'Templates/editMovie.template.html'
-                // controller: 'UserListController',
-                // controllerAs: 'userListVm'
+                templateUrl: 'Templates/editMovie.template.html',
+                controller: 'movieController',
+                controllerAs: 'movieCtrl'
             })
-            .when('/deleteUser', {
-                templateUrl: 'Templates/deleteUser.template.html'
-                // controller: 'UserListController',
-                // controllerAs: 'userListVm'
-            })
+            // .when('/deleteUser', {
+            //     templateUrl: 'Templates/deleteUser.template.html'
+            //     // controller: 'UserListController',
+            //     // controllerAs: 'userListVm'
+            // })
             .when('/deleteMovie', {
-                templateUrl: 'Templates/deleteMovie.template.html'
-                // controller: 'UserListController',
-                // controllerAs: 'userListVm'
+                templateUrl: 'Templates/deleteMovie.template.html',
+                controller: 'movieController',
+                controllerAs: 'movieCtrl'
             })
             .when('/createMovie', {
-                templateUrl: 'Templates/createMovie.template.html'
-                // controller: 'UserListController',
-                // controllerAs: 'userListVm'
+                templateUrl: 'Templates/createMovie.template.html',
+                controller: 'movieController',
+                controllerAs: 'movieCtrl'
             })
             .otherwise({
                 redirectTo: '/coverIn'
