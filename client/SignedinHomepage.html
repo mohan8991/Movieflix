@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="movieflix">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome | MovieFlix</title>
+
+    <link href="Styles/bootstrap-css/bootstrap.min.css" rel="stylesheet">
+    <link href="Styles/bootstrap-css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="Styles/font-awesome/font-awesome.min.css">
+    <link href="Styles/cover2.css" rel="stylesheet">
+
+    <link async href="http://fonts.googleapis.com/css?family=Monoton" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+
+</head>
+<body ng-controller="global as glob">
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#/coverIn"><div class="navbar-brand night-hotel">MovieFlix</div></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li class="navbar-userrole"><a href="#">Signed In as First Name,</a></li>-->
+                <li class="dropdown navbar-userrole">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello,{{glob.firstName}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">User Role: {{glob.role}}</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ng-click="glob.signOut()">Sign Out</a></li>
+                        <li><a href="#/editProfile">Edit Profile</a></li>
+                        <li ng-if = "glob.role=='Admin'" role="separator" class="divider"></li>
+                        <!--<li ng-if = "glob.role=='Admin'"><a href="#/editUser">Edit User Info</a></li>-->
+                        <!--<li ng-if = "glob.role=='Admin'"><a href="#/deleteUser">Delete User</a></li>-->
+                        <!--<li ng-if = "glob.role=='Admin'" role="separator" class="divider"></li>-->
+                        <li ng-if = "glob.role=='Admin'"><a href="#/createMovie">Create Movie</a></li>
+                        <li ng-if = "glob.role=='Admin'"><a href="#/editMovie">Edit Movie</a></li>
+                        <li ng-if = "glob.role=='Admin'"><a href="#/deleteMovie">Delete Movie</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-click="(activeView1 = 'active');(activeView = '')" class="{{activeView1}}"><a href="#/coverIn"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                <li ng-click="(activeView = 'active');(activeView1 = '')" class="{{activeView}}"><a href="#/catalog">Catalog<span class="sr-only">(current)</span></a>
+            </ul></li>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search Movie by Title" ng-model="searchText" required>
+                </div>
+                <a type="submit" class="btn btn-default" href="#/catalog">Search</a>
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div ng-view class="view"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
+<script src="JS-library/bootstrap-js/bootstrap.min.js"></script>
+<script src="JS-library/bootstrap-js/docs.min.js"></script>
+<script src="JS-library/Ang-library/angular.min.js"></script>
+<script src="JS-library/Ang-library/angular-messages.min.js"></script>
+<script src="JS-library/Ang-library/angular-route.min.js"></script>
+<script src="JS-library/ngStorage/ngStorage.min.js"></script>
+
+<script src="src/module/movieflix.module.js"></script>
+<script src="src/controller/global.controller.js"></script>
+<script src="src/controller/Catalog.controller.js"></script>
+<script src="src/service/movie.service.js"></script>
+<script src="src/controller/movieDetails.controller.js"></script>
+<script src="src/service/comments.service.js"></script>
+<script src="src/controller/editUser.controller.js"></script>
+<script src="src/service/user2.service.js"></script>
+<script src="src/controller/movie.controller.js"></script>
+</body>
+</html>

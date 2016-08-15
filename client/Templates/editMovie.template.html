@@ -1,0 +1,281 @@
+<div class="jumbotron ">
+    <div class="row">
+        <div class="heading-box">
+            <div class="heading">
+                <h2 id="jumbotron-heading">{Edit.Movie}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="user-info col-lg-5 col-xs-12">
+            <h3>Updated Movie:</h3><br>
+            <div class="form-group1">
+                <table>
+                    <tr>
+                        <td><b>Title</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.title}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Year:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.year}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Rated:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.rated}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Released:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.released}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Runtime:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.runtime}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Genre:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.genre}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Director:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.director}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Writer:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.writer}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Actors:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.actors}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Plot:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.plot}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Language:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.language}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Country:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.country}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Awards:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.awards}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Poster::</b></td>
+                        <td class="values"><img ng-src="{{movieCtrl.movieUpdated.poster}}" height="200px"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Metascore:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.metascore}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>ImdbRating:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.imdbRating}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>ImdbVotes:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.imdbVotes}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>ImdbID:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.imdbID}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Type:</b></td>
+                        <td class="values">{{movieCtrl.movieUpdated.type}}</td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <div class="user-info-form col-lg-4 col-xs-12">
+            <form class="form-update" ng-submit="form-update.$setPristine();movieCtrl.editMovie();">
+                <h3>Update Movie</h3>
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Title</b></span>
+                            <input type="text" class="form-control" name="name" id="title"  placeholder="Enter Movie Title" ng-model="movieCtrl.updateMovie.title"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Year</b></span>
+                            <input type="text" class="form-control" name="name" id="year"  placeholder="Enter Movie Year" ng-model="movieCtrl.updateMovie.year"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Rated</b></span>
+                            <input type="text" class="form-control" name="name" id="rated"  placeholder="Enter Movie Rated" ng-model="movieCtrl.updateMovie.rated"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Released Date</b></span>
+                            <input type="date" class="form-control" name="date" id="released"  placeholder="Enter Movie Released Date" ng-model="movieCtrl.updateMovie.date"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Runtime</b></span>
+                            <input type="text" class="form-control" name="name" id="runtime"  placeholder="Enter Movie Runtime in min" ng-model="movieCtrl.updateMovie.runtime"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Genre</b></span>
+                            <input type="text" class="form-control" name="name" id="genre"  placeholder="Enter Movie Genre" ng-model="movieCtrl.updateMovie.genre"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Director</b></span>
+                            <input type="text" class="form-control" name="name" id="director"  placeholder="Enter Movie Director" ng-model="movieCtrl.updateMovie.director"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Writer</b></span>
+                            <input type="text" class="form-control" name="name" id="writer"  placeholder="Enter Movie Writer" ng-model="movieCtrl.updateMovie.writer"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Actors</b></span>
+                            <input type="text" class="form-control" name="name" id="actors"  placeholder="Enter Movie Actors" ng-model="movieCtrl.updateMovie.actors"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Plot</b></span>
+                            <input type="text" class="form-control" name="name" id="plot"  placeholder="Enter Movie Plot" ng-model="movieCtrl.updateMovie.plot"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Language</b></span>
+                            <input type="text" class="form-control" name="name" id="language"  placeholder="Enter Movie language" ng-model="movieCtrl.updateMovie.language"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>country</b></span>
+                            <input type="text" class="form-control" name="name" id="country"  placeholder="Enter Movie country" ng-model="movieCtrl.updateMovie.country"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>awards</b></span>
+                            <input type="text" class="form-control" name="name" id="awards"  placeholder="Enter Movie awards" ng-model="movieCtrl.updateMovie.awards"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>poster</b></span>
+                            <input type="text" class="form-control" name="name" id="poster"  placeholder="Enter Movie poster url" ng-model="movieCtrl.updateMovie.poster"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>metascore</b></span>
+                            <input type="text" class="form-control" name="name" id="metascore"  placeholder="Enter Movie metascore" ng-model="movieCtrl.updateMovie.metascore"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>imdbRating</b></span>
+                            <input type="text" class="form-control" name="name" id="imdbRating"  placeholder="Enter Movie imdbRating" ng-model="movieCtrl.updateMovie.imdbRating"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>imdbVotes</b></span>
+                            <input type="text" class="form-control" name="name" id="imdbVotes"  placeholder="Enter Movie imdbVotes" ng-model="movieCtrl.updateMovie.imdbVotes"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>imdbID</b></span>
+                            <input type="text" class="form-control" name="name" id="imdbID"  placeholder="Enter Movie imdbID" ng-model="movieCtrl.updateMovie.imdbID"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Type</b></span>
+                            <input type="text" class="form-control" name="name" id="type"  placeholder="Enter Movie type" ng-model="movieCtrl.updateMovie.type"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label>Your Password to authorize update </label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Your Password:</b></span>
+                            <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your password"/>
+                        </div>
+                    </div>
+                </div>
+                <button class="update btn btn-lg btn-primary" id="2" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="jumbotron ">
+    <div class="row">
+        <div class="heading-box">
+            <div class="heading">
+                <h2 id="jumbotron-heading">{User.Profile}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="user-info col-lg-4 col-xs-12">
+            <h3>User Profile:</h3><br>
+            <div class="form-group1">
+                <table>
+                    <tr>
+                        <td><b>First Name:</b></td>
+                        <td class="values">{{editUser.currentUser.firstName}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Last Name:</b></td>
+                        <td class="values">{{editUser.currentUser.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email:</b></td>
+                        <td class="values">{{editUser.currentUser.email}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>User Name:</b></td>
+                        <td class="values">{{editUser.currentUser.userName}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Role:</b></td>
+                        <td class="values">{{editUser.currentUser.role}}</td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+        <div class="user-info-form col-lg-4 col-xs-12">
+            <form class="form-update" ng-submit="form-update.$setPristine();editUser.updateUser();">
+                <h3>Please update your profile</h3>
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>First Name:</b></span>
+                            <input type="text" class="form-control" name="name" id="fname"  placeholder="Enter your First Name" ng-model="editUser.updatingUser.firstName"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Last Name:</b></span>
+                            <input type="text" class="form-control" name="name" id="lname"  placeholder="Enter your Last Name" ng-model="editUser.updatingUser.lastName"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Email:</b></span>
+                            <input type="email" class="form-control" name="emil" id="emil"  placeholder="Enter your Email" ng-model="editUser.updatingUser.email"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Update Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Old Password:</b></span>
+                            <input type="password" class="form-control" name="password" id="oldPass" placeholder="Enter Your Old Password" required />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>New Password:</b></span>
+                            <input type="password" class="form-control" name="password" id="newPass" placeholder="Enter Your New Password" ng-model="temp" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>Confirm New Password:</b></span>
+                            <input type="password" class="form-control" name="password" id="confirmPass" placeholder="Confirm Your New Password" ng-model="editUser.updatingUser.password" required/>
+                        </div>
+                    </div>
+                </div>
+                <button class="update btn btn-lg btn-primary" id="2" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</div>

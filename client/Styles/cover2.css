@@ -1,0 +1,483 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+@font-face {
+    font-family: broadway-lights;
+    src: url("fonts/Showtime.ttf");
+}
+
+body {
+    background: url("https://irenehyleung.files.wordpress.com/2012/12/2012-movie-collage31.jpg") no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 20px;
+
+    color: white; /*imported for title*/
+}
+
+.night-hotel {
+    /*margin-top: -10px;*/
+    /*margin-bottom: -15px;*/
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    /*padding: 20px;*/
+    border: none;
+    font: normal 45px/1 "Monoton", Helvetica, sans-serif;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    text-shadow: 0 0 10px rgb(255,255,255) , 0 0 20px rgb(255,255,255) , 0 0 30px rgb(255,255,255) , 0 0 40px rgb(255, 18, 21), 0 0 70px rgb(255,17,119) , 0 0 80px rgb(255,17,119) , 0 0 100px rgb(255,17,119) , 0 0 150px rgb(255,17,1) ;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+}
+
+.night-hotel:hover {
+    text-shadow: 0 0 5px rgb(255,255,255) , 0 0 10px rgb(255,255,255) , 0 0 15px rgb(255,255,255) , 0 0 20px rgb(255,17,119) , 0 0 35px rgb(255,17,119) , 0 0 40px rgb(255,17,119) , 0 0 50px rgb(255,17,119) , 0 0 75px rgb(255,17,119) ;
+}
+
+.navbar-inverse {
+    border-radius: 10px;
+}
+
+.navbar-brand {
+    padding: 0;
+    padding-left: 30px;
+}
+
+.jumbotron {
+    width: auto;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: groove;
+    border-color: #0f0f0f;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 10px;
+    border-radius: 10px;
+    margin-right: 20px;
+    position: absolute;
+    background-color: #0f0f0f;
+    opacity: .97;
+}
+
+.heading-box {
+    margin-left: 15px;
+    margin-right: 18px;
+    width: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #333333;
+    margin-bottom: 20px;
+}
+
+
+.heading h2 {
+    margin: 5px;
+    font-family: broadway-lights;
+    color: #ffffff;
+    font-size: 35px;
+    margin-left: 20px;
+}
+
+.movie-info .col-lg-4 img {
+    border: solid silver;
+
+}
+
+@media (min-width: 1200px) {
+    .jumbotron {
+        padding-left: 10px;
+    }
+
+    .heading-box {
+        width: 1270px;
+    }
+
+    .movie-info .poster img {
+        margin: auto;
+        display: block;
+    }
+}
+
+hr.movie-line {
+    border-top: 1px solid #cdcdcd;
+}
+
+#carousel-example-generic {
+    right: 10%;
+    width: 120%;
+    z-index: 3;
+}
+
+.carousel-inner{
+    border: 1px solid white;
+    background-color: gray;
+    height: 500px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.item img {
+    width: 20%;
+    height: 20%;
+}
+
+/*carasol gallery */
+
+
+.wrapper {
+    width: 90%;
+    margin: 30px auto;
+}
+
+div.gallery {
+    margin-top: 50px;
+
+}
+
+div.gallery ul {
+    list-style-type: none;
+    margin-left: 100px;
+}
+
+/* animation */
+div.gallery ul li, div.gallery li img {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+div.gallery ul li {
+    position: relative;
+    float: left;
+    width: 130px;
+    height: 130px;
+    margin: 15px;
+    padding: 5px;
+    z-index: 0;
+}
+
+/* Make sure z-index is higher on hover */
+/* Ensure that hover image overlapped the others */
+div.gallery ul li:hover {
+    z-index: 5;
+}
+
+/* Image is position nicely under li */
+div.gallery ul li img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 5px;
+    width: 120%;
+    height: 200%;
+    /*border: 1px solid black;*/
+
+}
+
+div.gallery ul li img:hover {
+    width: 200px;
+    height: 230%;
+    margin-top: -50px;
+    margin-left: -130px;
+    top: 65%;
+    left: 65%;
+}
+
+.movie-box {
+    margin-left: 5%;
+    padding: 50px;
+    width: 90%;
+    text-align: center;
+}
+
+.gallery h1 {
+    font-size: 50px;
+    color: white;
+
+}
+
+@media (max-device-width: 500px) {
+    .inner {
+        float: left;
+    }
+
+    #carousel-example-generic {
+        width: 115%;
+        height: auto;
+    }
+
+    .carousel-inner {
+        height: auto;
+        padding-bottom: 40px;
+    }
+
+    div.gallery ul li {
+        width: 270px;
+        height: 300px;
+    }
+
+    div.gallery ul li img {
+        left: 75px;
+        height: 320px;
+        width: 100%;
+    }
+
+    div.gallery ul li img:hover {
+        width: 300px;
+        height: 120%;
+        margin-top: 0px;
+        margin-left: -105px;
+        top: 5%;
+        left: 60%;
+    }
+}
+
+/* this is from User Catalog*/
+
+
+.heading-box .dropdown-toggle{
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: -45px;
+    float: right;
+}
+
+.catalog {
+    margin-left: 0px;
+}
+
+.thumbnail {
+    border-radius: 10px;
+    position: static;
+    z-index: 5;
+    /*overflow: hidden;*/
+    /*-webkit-transition: all 0.3s ease-in-out;*/
+    /*-moz-transition: all 0.3s ease-in-out;*/
+    /*-o-transition: all 0.3s ease-in-out;*/
+    /*transition: all 0.3s ease-in-out;*/
+}
+
+.thumbnail a>img {
+    height: 300px;
+}
+
+.thumbnail .caption {
+    padding-bottom: 25%;
+    height: 80px;
+}
+
+.caption h5{
+    margin: 0;
+    text-align: justify;
+    font-weight: 700;
+    border-bottom: 1px solid #c4cad0;
+    margin-bottom: 5px;
+}
+
+.caption .m-info {
+    font-size: 11px;
+    text-align: center;
+    border-bottom: 1px solid #c4cad0;
+    margin-bottom: -20px;
+}
+
+@media (min-device-width: 1024px) {
+
+    .thumbnail a > img {
+        height: 250px;
+    }
+
+    .thumbnail .caption {
+        height: 110px;
+    }
+
+}
+
+.stars-ratings {
+    float: left;
+    margin-top: -6px;
+}
+/****** Style Star Rating Widget *****/
+
+.rating {
+    border: none;
+    /*text-align: right;*/
+    float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.rating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.rating > label {
+    color: #ddd;
+    float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+/*from title*/
+
+
+@media (min-width: 1024px) {
+    .movie-info .poster img {
+        margin: auto;
+        display: block;
+    }
+}
+
+.title {
+    font-size: 50px;
+}
+
+hr.movie-line {
+    border-top: 1px solid #cdcdcd;
+}
+
+.stars {
+    padding: 0px;
+}
+
+.big-star {
+    margin-top: -20px;
+    background-position: -180px -71px;
+    background-image: url("http://ia.media-imdb.com/images/G/01/imdb/images/title/titlePageSprite-4125035369._V_.png");
+    width: 66px;
+    height: 60px;
+    line-height: 66px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+    padding-right: 5px;
+}
+
+.star-heading {
+    text-align: right;
+    font-size: 30px;
+    margin-top: -10px;
+}
+
+.mdetails {
+    text-align: left;
+}
+
+.details {
+    width:100%
+}
+
+.details tr td {
+    padding: 2px;
+}
+
+/*comments styles*/
+.panel {
+    position:relative;
+    color: #0f0f0f;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+    position:absolute;
+    top:11px;left:-16px;
+    right:100%;
+    width:0;
+    height:0;
+    display:block;
+    content:" ";
+    border-color:transparent;
+    border-style:solid solid outset;
+    pointer-events:none;
+}
+.panel>.panel-heading:after{
+    border-width:7px;
+    border-right-color:#f7f7f7;
+    margin-top:1px;
+    margin-left:2px;
+}
+.panel>.panel-heading:before{
+    border-right-color:#ddd;
+    border-width:8px;
+}
+
+.input-comments button {
+    float: right;
+}
+
+.trailer {
+    position: relative;
+    padding: 50px;
+    vertical-align: middle;
+    float: left;
+    /*margin-left: 10px;*/
+}
+
+.user-reviews {
+    float: right;
+}
+
+#submit-comment {
+    margin-top: 10px;
+}
+
+/*From edit profile*/
+
+.input-group .form-control {
+    width: 100%;
+}
+
+.update {
+    float: right;
+    /*margin-right: 26%;*/
+}
+
+.form-group label {
+    text-align: right;
+}
+
+.form-group1 {
+    margin-top: -20px;
+    font-size: 20px;
+}
+
+.user-info{
+    margin-left: 20%;
+}
+
+.parameters{
+    padding: 20px;
+}
+
+.key {
+    text-align: right;
+    padding-right: 0px;
+}
+
+.values {
+    padding-left: 20px;
+}

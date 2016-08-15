@@ -1,0 +1,119 @@
+<div class="jumbotron ">
+    <div class="row">
+        <div class="heading-box">
+            <div class="heading">
+                <h2 id="jumbotron-heading">{Movie.info}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="movie-box">
+        <div class="movie-info">
+            <div class="poster col-xs-12 col-md-4 col-lg-4">
+                <img ng-src={{mDetails.details.poster}}>
+            </div>
+            <div class="movie-info col-xs-12 col-md-8 col-lg-8">
+                <span class="title">{{mDetails.details.title}}</span><span class="year"> <a>({{mDetails.details.year}})</a></span> <br>
+                <span class="movie-tags">{{mDetails.details.rated}} | {{mDetails.details.runtime}} | {{mDetails.details.genre}} | {{mDetails.details.released}} ({{mDetails.details.country}}) | <a>{{mDetails.details.type}}</a> </span><br>
+                <div class="stars col-xs-12 col-lg-12">
+                    <hr class="movie-line">
+                    <div class="big-star">
+                        <b>{{(mDetails.stars.totalStar)/(mDetails.stars.length) | number: 1}}/5</b>
+                    </div>
+                    <span class="star-heading col-lg-5 col-md-6 col-xs-5">MovieFlix Ratings:</span>
+                    <span class="stars-ratings">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" ng-model="mDetails.userStar.star" ng-click="mDetails.submitStars();" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4half" name="rating" value="4" ng-model="mDetails.userStar.star" ng-click="mDetails.submitStars();" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4" ng-model="mDetails.userStar.star" ng-click="mDetails.submitStars();" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3half" name="rating" value="3" ng-model="mDetails.userStar.star" ng-click="mDetails.submitStars();" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3" ng-model="mDetails.userStar.star" ng-click="mDetails.submitStars();" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2half" name="rating" value="2" ng-model="mDetails.userStar.star" ng-click="mDetails.submitStars();" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2" ng-model="mDetails.userStar.star" ng-click="mDetails.submitStars();" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1half" name="rating" value="1" ng-model="mDetails.userStar.star" ng-click="mDetails.submitStars();" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1" ng-model="mDetails.userStar.star" ng-click="mDetails.submitStars();" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="starhalf" name="rating" value="0" ng-model="mDetails.userStar.star" ng-click="mDetails.submitStars();" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label><br>
+                        </fieldset>
+                    </span>
+                    <div class="col-lg-2">
+                        <b>/ {{mDetails.stars.length}} voters </b>
+                    </div>
+                    <br><hr class="movie-line">
+                </div>
+                <div class="mdetails">
+                    <table class="details">
+                        <tr>
+                            <td><b>Plot: {{mDetails.stars.newStar}}</b></td>
+                            <td>{{mDetails.details.plot}}<br></td>
+                        </tr>
+                        <tr>
+                            <td><b>Director:</b></td>
+                            <td>{{mDetails.details.director}}<br></td>
+                        </tr>
+                        <tr>
+                            <td><b>Writer:</b></td>
+                            <td>{{mDetails.details.writer}}<br></td>
+                        </tr>
+                        <tr>
+                            <td><b>Actors:</b></td>
+                            <td>{{mDetails.details.actors}}<br></td>
+                        </tr>
+                        <tr>
+                            <td><b>Language:</b></td>
+                            <td>{{mDetails.details.language}}<br></td>
+                        </tr>
+                        <tr>
+                            <td><b>Awards:</b></td>
+                            <td>{{mDetails.details.awards}}<br></td>
+                        </tr>
+                        <tr>
+                            <td><b>Metascore:</b></td>
+                            <td>{{mDetails.details.metascore}}<br></td>
+                        </tr>
+                        <tr>
+                            <td><b>ImdbRating:</b></td>
+                            <td>{{mDetails.details.imdbRating}}<br></td>
+                        </tr>
+                        <tr>
+                            <td><b>ImdbVotes:</b></td>
+                            <td>{{mDetails.details.imdbVotes}}<br></td>
+                        </tr>
+                        <tr>
+                            <td><a ng-href="http://www.imdb.com/title/{{mDetails.details.imdbID}}"><b>Imdb Link</b></a></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="user-reviews col-lg-6 col-md-6 col-sm-12">
+        <h2>User Reviews</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default" ng-repeat = "comment in mDetails.comments">
+                        <div class="panel-heading">
+                            <strong>{{comment.user.userName}}</strong> <span class="text-muted">commented on {{comment.date}}</span>
+                        </div>
+                        <div class="panel-body">
+                            {{comment.comments}}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-12">
+                    <form name="commentsForm" class="input-comments" ng-submit="commentsForm.$setPristine(); mDetails.createComments()" novalidate>
+                        <textarea class="form-control" rows="5" id="comment" placeholder="Please Leave a Comment......." ng-model="mDetails.newComments.comments" required></textarea>
+                        <button type="submit" class="btn btn-default" id="submit-comment">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!--<div class="trailer col-sm-12 col-lg-6">-->
+        <!--<iframe ng-src="http://www.imdb.com/video/imdb/vi2821566745/imdb/embed?autoplay=false&width=480" width="480" height="270" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>-->
+    <!--</div>-->
+</div>
