@@ -26,7 +26,6 @@ public class UserController {
 	
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public UserInfo create(@RequestBody UserInfo uInfo) {
-		System.out.println("I was called" + " " + uInfo);
 		return service.create(uInfo);
 	}
 	

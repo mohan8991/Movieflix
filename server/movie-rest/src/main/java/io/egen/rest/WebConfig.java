@@ -17,6 +17,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 				.allowedOrigins("*")
 				.allowedHeaders("Authorization", "Origin", "Content-Type") //TODO please change this to authenticate the end point
 				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-				.allowCredentials(false);
+				.allowCredentials(false)
+				.maxAge(3600);
     }
 }
