@@ -81,8 +81,9 @@ public class MovieController {
 		return service.createAll(movies, authHeader);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Movie update(@RequestHeader(value="Authorization") String authHeader, @RequestBody Movie mov) {
+		System.out.println("this was accesssed" + mov);
 		return service.update(mov, authHeader);
 	}
 

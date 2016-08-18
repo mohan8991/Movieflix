@@ -25,7 +25,7 @@ public interface CommentsRepository {
 
 	public MStars createStar(MStars stars);
 
-	public MStars findStarByMov(String movId);
+	public List<MStars> findStarByMov(String movId);
 	
 	public int findAvgStars(String movId);
 	

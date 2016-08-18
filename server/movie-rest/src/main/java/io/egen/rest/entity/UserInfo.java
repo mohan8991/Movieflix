@@ -26,6 +26,8 @@ public class UserInfo {
 	private String firstName;
 	private String lastName;
 	
+	private String email;
+	
 	@Column(unique = true)
 	private String userName;
 	
@@ -71,6 +73,12 @@ public class UserInfo {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getRole() {
 		return role;
 	}
@@ -79,9 +87,8 @@ public class UserInfo {
 	}
 	@Override
 	public String toString() {
-		return "UserInfo [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", password=" + password + ", role=" + role + ", token=" + token + "]";
+		return "UserInfo [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", userName=" + userName + ", password=" + password + ", role=" + role + ", token=" + token + "]";
 	}
-	
 	
 }

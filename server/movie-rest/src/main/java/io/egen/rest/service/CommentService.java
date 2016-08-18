@@ -26,7 +26,7 @@ public interface CommentService {
 
 	public MStars findStarbyId(String starId, String authHeader);
 
-	public MStars findStarByMov(String movId);
+	public List<MStars> findStarByMov(String movId);
 
 	public MStars avgRating(String movId, String authHeader);
 	

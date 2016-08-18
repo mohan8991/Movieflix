@@ -60,7 +60,7 @@ public class CommentsController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "findStarByMov/{movId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public MStars findStarByMov(@PathVariable("movId") String movId) {
+	public List<MStars> findStarByMov(@PathVariable("movId") String movId) {
 		return service.findStarByMov(movId);
 	}
 	

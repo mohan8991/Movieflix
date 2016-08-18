@@ -27,7 +27,7 @@ public class UserServiceImp implements UserService {
 	UserRepository repository;
 	
 	@Override
-	public UserInfo findOne(String userNametoFind, String authHeader) {
+	public UserInfo findOne(String authHeader) {
 		String token = authHeader.substring(7);
 		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
 		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
@@ -35,14 +35,14 @@ public class UserServiceImp implements UserService {
 		if(claims == null){
 			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
 		}
-		if(!(usr.getRole().equals("Admin"))){
-			throw new UserNoWritePermission(" Only Admin Can do that or Who have created it can only do it");
-		}
-		UserInfo existing = repository.findOne(userNametoFind);
-		if (existing == null){
+//		if(!(usr.getRole().equals("Admin"))){
+//			throw new UserNoWritePermission(" Only Admin Can do that or Who have created it can only do it");
+//		}
+//		UserInfo existing = repository.findOne(userNametoFind);
+		if (usr == null){
 			throw new UserNotFoundException("User with username:" + userName + "not found");
 		}
-		return existing;
+		return usr;
 	}
 	
 	@Override
