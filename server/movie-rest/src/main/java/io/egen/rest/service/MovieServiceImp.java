@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.egen.rest.JwtFilter;
 import io.egen.rest.entity.Movie;
 import io.egen.rest.entity.UserInfo;
 import io.egen.rest.exception.MovieAlreadyExistsException;
@@ -27,103 +28,70 @@ public class MovieServiceImp implements MovieService{
 	@Autowired
     UserRepository userRepo;
 
+	@Autowired
+	JwtFilter filter;
 	
 	@Override
 	@Transactional
 	public List<Movie> findAllByTitle(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		
+		String userName = filter.getUserName(authHeader);
 		return repository.findAllByTitle();
 	}
 
 	@Override
 	@Transactional
 	public List<Movie> findAllByYear(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		return repository.findAllByYear();
 	}
 	
 	@Override
 	@Transactional
 	public List<Movie> findAllByGenre(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		return repository.findAllByGenre();
 	}
 
 	@Override
 	@Transactional
 	public List<Movie> findAllByType(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		return repository.findAllByType();
 	}
 
 	@Override
 	@Transactional
 	public List<Movie> findAllByImdbRatings(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		return repository.findAllByImdbRatings();
 	}
 
 	@Override
 	@Transactional
 	public List<Movie> findAllByImdbVoters(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		return repository.findAllByImdbVoters();
 	}
 
 	@Override
 	@Transactional
 	public List<Movie> findMoviesByRating(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		return repository.findMoviesByRating();
 	}
 
 	@Override
 	@Transactional
 	public List<Movie> findSeriesByRating(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		return repository.findSeriesByRating();
 	}
 
 	@Override
 	@Transactional
 	public Movie findbyTitle(String title, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		Movie existing = repository.findByTitle(title);
 		if (existing == null) {
 			throw new MovieNotFoundException("Movie with ID:" + title + " not found");
@@ -134,11 +102,7 @@ public class MovieServiceImp implements MovieService{
 	@Override
 	@Transactional
 	public Movie findOne(String movid, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		Movie existing = repository.findOne(movid);
 		if (existing == null) {
 			throw new MovieNotFoundException("Movie with ID:" + movid + " not found");
@@ -149,13 +113,8 @@ public class MovieServiceImp implements MovieService{
 	@Override
 	@Transactional
     public Movie create(Movie mov, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = userRepo.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
         if (!(usr.getRole().equals("Admin"))) {
             throw new UserNoWritePermission(" Only Admin Can do that ");
         }
@@ -169,13 +128,8 @@ public class MovieServiceImp implements MovieService{
 	@Override
 	@Transactional
 	public List<Movie> createAll(List<Movie> movies, String authHeader){
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = userRepo.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
 		if(!usr.getRole().equals("Admin")){
 			throw new UserNoWritePermission(" Only Admin Can do that ");
 		}
@@ -185,13 +139,8 @@ public class MovieServiceImp implements MovieService{
 	@Override
 	@Transactional
 	public Movie update(Movie mov, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = userRepo.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
 		if(!(usr.getRole().equals("Admin"))){
 			throw new UserNoWritePermission(" Only Admin Can do that ");
 		}
@@ -205,13 +154,8 @@ public class MovieServiceImp implements MovieService{
 	@Override
 	@Transactional
 	public void delete(String movid, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = userRepo.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
 		if(!usr.getRole().equals("Admin")){
 			throw new UserNoWritePermission(" Only Admin Can do that ");
 		}

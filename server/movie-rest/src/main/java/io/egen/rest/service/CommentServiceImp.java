@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.egen.rest.JwtFilter;
 import io.egen.rest.entity.Comments;
 import io.egen.rest.entity.MStars;
 import io.egen.rest.entity.Movie;
@@ -35,14 +36,13 @@ public class CommentServiceImp implements CommentService {
 	@Autowired
 	MovieRepository movieRepo;
 	
+	@Autowired
+	JwtFilter filter;
+	
 	@Override
 	@Transactional
 	public List<Comments> findAllByTitle(String title, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		Movie existing = movieRepo.findByTitle(title);
 		if (existing == null) {
 			throw new MovieNotFoundException("Movie with ID:" + title + " not found");
@@ -53,13 +53,8 @@ public class CommentServiceImp implements CommentService {
 	@Override
 	@Transactional
 	public List<Comments> findAllByUser(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = userRepo.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
 		if (usr == null) {
 			throw new UserNotFoundException("User with User Name:" + userName + " not found" );
 		}
@@ -68,11 +63,7 @@ public class CommentServiceImp implements CommentService {
 	
 	@Override
 	public Comments findOne(String comId, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		Comments existing = repository.findOne(comId);
 		if (existing == null) {
 			throw new CommentsNotFoundException("Comments with ID:" + comId + " not found");
@@ -83,13 +74,8 @@ public class CommentServiceImp implements CommentService {
 	@Override
 	@Transactional
 	public Comments create(String movId, Comments comments, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = userRepo.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
 		Movie mov = movieRepo.findOne(movId);
 		comments.setUser(usr);
 		comments.setMovie(mov);
@@ -99,13 +85,8 @@ public class CommentServiceImp implements CommentService {
 	@Override
 	@Transactional
 	public Comments update(String comId, Comments comm, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = userRepo.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
 		Comments existing = repository.findOne(comId);
 		if(!(usr.getRole().equals("Admin") || existing.getUser().getUserName().equals(userName))){
 			throw new UserNoWritePermission(" You can update only your comments or Admins can do that");
@@ -119,13 +100,8 @@ public class CommentServiceImp implements CommentService {
 	@Override
 	@Transactional
 	public void delete(String comId, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = userRepo.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
 		Comments existing = repository.findOne(comId);
 		System.out.println(existing);
 		if(!(usr.getRole().equals("Admin") || existing.getUser().getUserName().equals(userName))){
@@ -140,12 +116,7 @@ public class CommentServiceImp implements CommentService {
 	@Override
 	@Transactional
 	public MStars updateStar(String starId, MStars stars, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		MStars existing = repository.findStarbyId(starId);
 		if(!(existing.getUser().getUserName().equals(userName))){
 			throw new UserNoWritePermission(" You can update only your own Stars");
@@ -161,13 +132,8 @@ public class CommentServiceImp implements CommentService {
 	@Override
 	@Transactional
 	public MStars createStar(String movId, MStars stars, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = userRepo.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
 		Movie mov = movieRepo.findOne(movId);
 		stars.setUser(usr);
 		stars.setMovie(mov);
@@ -177,11 +143,7 @@ public class CommentServiceImp implements CommentService {
 	@Override
 	@Transactional
 	public MStars findStarbyId(String starId, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		MStars existing = repository.findStarbyId(starId);
 		if (existing == null) {
 			throw new starsNotFoundException("Comments with ID:" + starId + " not found");
@@ -202,11 +164,7 @@ public class CommentServiceImp implements CommentService {
 	@Override
 	@Transactional
 	public MStars avgRating(String movId, String authHeader){
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
 		Movie existing = movieRepo.findOne(movId);
 		if (existing == null) {
 			throw new MovieNotFoundException("Movie with ID:" + movId + " not found");

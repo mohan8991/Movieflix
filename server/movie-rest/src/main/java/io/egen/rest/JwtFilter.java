@@ -1,6 +1,8 @@
 package io.egen.rest;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -8,36 +10,42 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 
+import io.egen.rest.entity.UserInfo;
+import io.egen.rest.exception.NoAuthHeaderFound;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 
-public class JwtFilter extends GenericFilterBean {
+@Component
+public class JwtFilter {
+	
+	public String createToken(UserInfo existing){
+		return (Jwts.builder()
+				.setSubject(existing.getUserName())
+				.claim("role", existing)
+				.setIssuedAt(new Date())
+				.signWith(SignatureAlgorithm.HS256, "secretkey")
+				.compact());
+	}
 
-	@Override
-	public void doFilter(final ServletRequest req,
-						final ServletResponse res,
-						final FilterChain chain)throws IOException, ServletException {
-		final HttpServletRequest request = (HttpServletRequest) req;
+	public String getUserName(String authHeader){
+		String token = authHeader.substring(7);
 		
-		final String authHeader = request.getHeader("Authorization");
-		if (authHeader == null || !authHeader.startsWith("Bearer ")){
-			throw new ServletException("Missing or invalid Authorization header.");
-		}
-		final String token = authHeader.substring(7);
+		Claims claims = Jwts.parser()
+				.setSigningKey("secretkey")
+				.parseClaimsJws(token)
+				.getBody();
 		
-		try {
-			final Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-			request.setAttribute("claims", claims);
-		}
-		catch(final SignatureException e){
-			throw new ServletException("Invalid token");
+		
+		if(claims == null){
+			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
 		}
 		
-		chain.doFilter(req, res);
-		
+		return (String) ((Map<String, Object>) claims.get("role")).get("userName");
 	}
 
 }

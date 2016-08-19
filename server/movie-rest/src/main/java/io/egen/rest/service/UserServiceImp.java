@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.egen.rest.JwtFilter;
 import io.egen.rest.entity.UserInfo;
 import io.egen.rest.exception.InvalidUserNameException;
 import io.egen.rest.exception.NewUserDefault;
@@ -26,15 +27,13 @@ public class UserServiceImp implements UserService {
 	@Autowired
 	UserRepository repository;
 	
+	@Autowired
+	JwtFilter filter;
+	
 	@Override
 	public UserInfo findOne(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
-		UserInfo usr = repository.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
+		String userName = filter.getUserName(authHeader);
+		UserInfo usr = repository.findOne(userName);		
 //		if(!(usr.getRole().equals("Admin"))){
 //			throw new UserNoWritePermission(" Only Admin Can do that or Who have created it can only do it");
 //		}
@@ -65,13 +64,8 @@ public class UserServiceImp implements UserService {
 	@Override
 	@Transactional
 	public UserInfo update(UserInfo uInfo, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = repository.findOne(userName);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
 		if(!(usr.getRole().equals("Admin") || usr.getUserName().equals(userName))){
 			throw new UserNoWritePermission(" Only Admin Can do that or Who have created it can only do it");
 		}
@@ -85,14 +79,9 @@ public class UserServiceImp implements UserService {
 	@Override
 	@Transactional
 	public void delete(String userName1, String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = repository.findOne(userName);
 		UserInfo delusr = repository.findOne(userName1);
-		if(claims == null){
-			throw new NoAuthHeaderFound("Invalid Request: No Authorization");
-		}
 		if(!usr.getRole().equals("Admin")){
 			throw new UserNoWritePermission(" Only Admin Can do that ");
 		}
@@ -112,9 +101,7 @@ public class UserServiceImp implements UserService {
 	@Override
 	@Transactional
 	public void SignOut(String authHeader) {
-		String token = authHeader.substring(7);
-		Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
-		String userName = (String) ((Map<String, Object>) claims.get("role")).get("userName");
+		String userName = filter.getUserName(authHeader);
 		UserInfo usr = repository.findOne(userName);
 		usr.setToken(null);
 		repository.update(usr);
@@ -131,8 +118,8 @@ public class UserServiceImp implements UserService {
 		}
 		if(!existing.getPassword().equals(uInfo.getPassword())){
 			throw new PasswordNotMatchException("The password you have entered do not Match please try again");
-		}	
-		existing.setToken(Jwts.builder().setSubject(existing.getUserName()).claim("role", existing).setIssuedAt(new Date()).signWith(SignatureAlgorithm.HS256, "secretkey").compact());
+		}
+		existing.setToken(filter.createToken(existing));
 		return repository.update(existing);
 		}
 
